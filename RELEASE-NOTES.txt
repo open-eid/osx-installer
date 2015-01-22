@@ -1,0 +1,38 @@
+Packaging version 3.10 release notes
+--------------------------------------
+Changes compared to ver 3.9.1
+
+- Upgraded signing of OSX distribution packages, v2 signature is now used. 
+- Removed Safari browser signing plug-in from OSX installation package, Firefox NPAPI plug-in is used instead. 
+
+
+Packaging version 3.9.1 release notes
+--------------------------------------
+Changes compared to ver 3.9
+
+- Started using QT version 5.3.1 in OSX environment.
+- Removed test certificates' packaging for DigiDoc3 Client in OSX.
+
+
+Packaging version 3.9 release notes
+--------------------------------------
+Changes compared to ver 3.8.2
+
+- Improved ID-software installer in OSX, now the system's language is used also in installer.
+- Added new Finnish certificates "VRK CA for Qualified Certificates - G2" or "VRK Gov. CA for Citizen Qualified Certificates - G2" to Finnish certificates' installation packages. 
+- Added Finnish, Latvian, Lithuanian test certificates to test certificates' installation packages. 
+
+
+Packaging version 3.8.1 release notes
+--------------------------------------
+Changes compared to ver 3.8.0
+
+- Removed the removal of OpenSC package during installation of ID card software in OSX environment.
+
+
+Packaging version 3.8.0 release notes
+--------------------------------------
+
+- Created browser integration package for OSX users that installs the components which are not accessible from Apple App Store and are needed in order to use ID card in addition to Mobile-ID in OSX environment. Discontinued packaging of the general ID-software package for OSX platform, the ID-software components are now distributed separately via Apple App Store and the browser integration package.
+- Added support for OSX 10.9. Removed support for OSX 10.6.
+- Added the ID-card software uninstalling script into OSX package.
