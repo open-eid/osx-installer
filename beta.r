@@ -31,6 +31,10 @@ data 'TEXT' (5000, "English") {
 	"operation system OSX 10.10, 10.9, 10.8, 10.7\n"
 	"The software may not work properly and some faults may occur.\n"
 	"We appreciate your feedback to abi@id.ee.\n"
+//	"Please note that beta software has not yet been released it may "
+//	"contain errors and may not function as well as released sofware.\n"
+//	"Please do not install or copy beta sofware in to Applications "
+//	"folder as there should installed only released sofware."
 };
 
 data 'styl' (5000, "English") {
