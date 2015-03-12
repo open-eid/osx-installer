@@ -4,7 +4,7 @@
     <allowed-os-versions>
         <os-version min="10.7"/>
     </allowed-os-versions>
-    <options customize="never" require-scripts="false" rootVolumeOnly="true" allow-external-scripts="yes"/><!-- hostArchitectures="x86_64"/-->
+    <options customize="never" require-scripts="false" rootVolumeOnly="true"/><!-- hostArchitectures="x86_64"/-->
     <!--domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/-->
     <background file="background.png"/>
     <welcome language="et" mime-type="text/rtf"><![CDATA[{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf400
@@ -160,7 +160,7 @@ function pm_install_check() {
     my.result.type = 'Fatal';
     return false;
   }
-  if(system.run('/bin/sh', '-c', '/bin/ps -e | /usr/bin/grep -E \'Google Chrome\' | /usr/bin/grep -qv grep') == 0) {
+  if(system.applications.fromIdentifier("com.google.Chrome").length > 0) {
     my.result.title = system.localizedString('SU_WARNING');
     my.result.message = system.localizedString('SU_CHROME');
     my.result.type = 'Warning';
@@ -168,17 +168,33 @@ function pm_install_check() {
   }
   return true;
 }
+
+function pm_drivers1010_selected() {
+  return system.compareVersions(system.version.ProductVersion, '10.10') >= 0;
+}
+
+function pm_driversold_selected() {
+  return system.compareVersions(system.version.ProductVersion, '10.10') < 0;
+}
 ]]>
     </script>
     <choices-outline>
+        <line choice="drivers1010"/>
+        <line choice="driversold"/>
         <line choice="default"/>
     </choices-outline>
-    <choice id="default">
-        <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.esteid-pkcs11">esteid-pkcs11.pkg</pkg-ref>
+    <choice id="default" start_selected="true">
         <pkg-ref id="ee.ria.esteidfirefoxplugin">esteidfirefoxplugin.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteidpkcs11loader">esteidpkcs11loader.pkg</pkg-ref>
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
         <pkg-ref id="ee.ria.estonianidcard">estonianidcard.pkg</pkg-ref>
+    </choice>
+    <choice id="drivers1010" start_selected="true" selected="pm_drivers1010_selected()">
+        <pkg-ref id="ee.ria.esteid-pkcs11">esteid-pkcs11.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
+    </choice>
+    <choice id="driversold" start_selected="false" selected="pm_driversold_selected()">
+        <pkg-ref id="ee.ria.esteid-pkcs11-old">esteid-pkcs11-old.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteid-tokend-old">esteid-tokend-old.pkg</pkg-ref>
     </choice>
 </installer-gui-script>
