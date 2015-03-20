@@ -12,5 +12,6 @@
     </choices-outline>
     <choice id="default">
         <pkg-ref id="ee.ria.esteidfirefoxplugin-dbg">esteidfirefoxplugin-dbg.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.chrome-token-signing-dbg">chrome-token-signing-dbg.pkg</pkg-ref>
     </choice>
 </installer-gui-script>

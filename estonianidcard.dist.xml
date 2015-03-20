@@ -186,6 +186,7 @@ function pm_driversold_selected() {
     <choice id="default" start_selected="true">
         <pkg-ref id="ee.ria.esteidfirefoxplugin">esteidfirefoxplugin.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteidpkcs11loader">esteidpkcs11loader.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
         <pkg-ref id="ee.ria.estonianidcard">estonianidcard.pkg</pkg-ref>
     </choice>
