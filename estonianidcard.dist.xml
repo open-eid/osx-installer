@@ -108,9 +108,7 @@ Additional software is available in App Store:\
 <![CDATA[
 "SU_TITLE" = "Eesti ID kaardi tarkvara";
 "SU_ERROR" = "Viga";
-"SU_WARNING" = "Warning";
 "SU_64BIT" = "Protsessor peab toetama 64 bit arhitektuuri";
-"SU_CHROME" = "Sulge Google Chrome rakendus";
 "SU_POWERPC" = "PowerPC ei ole toetatud.";
 "SU_MIN" = "OS X peab olema 10.7 (Lion) või uuem.";
 ]]>
@@ -119,9 +117,7 @@ Additional software is available in App Store:\
 <![CDATA[
 "SU_TITLE" = "Estonian ID Card Software";
 "SU_ERROR" = "Error";
-"SU_WARNING" = "Warning";
 "SU_64BIT" = "Processor must support 64 bit architecture";
-"SU_CHROME" = "Close Google Chrome application";
 "SU_POWERPC" = "PowerPC is not supported.";
 "SU_MIN" = "OS X must be 10.7 (Lion) or newer.";
 ]]>
@@ -130,9 +126,7 @@ Additional software is available in App Store:\
 <![CDATA[
 "SU_TITLE" = "Estonian ID Card Software";
 "SU_ERROR" = "Error";
-"SU_WARNING" = "Warning";
 "SU_64BIT" = "Processor must support 64 bit architecture";
-"SU_CHROME" = "Close Google Chrome application";
 "SU_POWERPC" = "PowerPC is not supported.";
 "SU_MIN" = "OS X must be 10.7 (Lion) or newer.";
 ]]>
@@ -158,12 +152,6 @@ function pm_install_check() {
     my.result.title = system.localizedString('SU_ERROR');
     my.result.message = system.localizedString('SU_64BIT');
     my.result.type = 'Fatal';
-    return false;
-  }
-  if(system.applications.fromIdentifier("com.google.Chrome").length > 0) {
-    my.result.title = system.localizedString('SU_WARNING');
-    my.result.message = system.localizedString('SU_CHROME');
-    my.result.type = 'Warning';
     return false;
   }
   return true;
@@ -198,4 +186,9 @@ function pm_driversold_selected() {
         <pkg-ref id="ee.ria.esteid-pkcs11-old">esteid-pkcs11-old.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend-old">esteid-tokend-old.pkg</pkg-ref>
     </choice>
+    <pkg-ref id="ee.ria.estonianidcard">
+        <must-close>
+            <app id="com.google.Chrome"/>
+        </must-close>
+    </pkg-ref>
 </installer-gui-script>
