@@ -1,0 +1,138 @@
+#!/bin/bash
+
+#UNINSTALLS IDEELABOR PACKAGE
+if [ -e /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib.1.3.9 ]; then
+  rm /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib
+  rm /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib.1.3.9
+  mv /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib.1.3.8 /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib
+fi
+
+rm -rf /Library/Internet\ Plug-Ins/npidcard.plugin
+
+#UNINSTALLS SMARTLINK PACKAGE
+
+if [ -e "/Applications/OpenOffice.org.app/Contents/program/unopkg" ]; then
+  echo 'Removing OpenOffice'
+  /Applications/OpenOffice.org.app/Contents/program/unopkg list --shared ee.smartlink.ooo.digidoc >/dev/null
+  /Applications/OpenOffice.org.app/Contents/program/unopkg remove --shared ee.smartlink.ooo.digidoc
+  /Applications/OpenOffice.org.app/Contents/program/unopkg list --shared > /dev/null 2>&1
+fi
+
+echo 'Removing Mozilla extension'
+rm -fR /Library/Application\ Support/Mozilla/Extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/{aa84ce40-4253-11da-8cd6-0800200c9a66}
+rm -fR /Library/Application\ Support/Mozilla/Extensions/{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}/{aa84ce40-4253-11da-8cd6-0800200c9a66}
+rm -fR /Library/Application\ Support/Mozilla/Extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{aa84ce40-4253-11da-8cd6-0800200c9a66}
+
+echo 'Removing Updater'
+rm -fR /Library/Receipts/org.esteid.*
+rm -f /Library/LaunchAgents/org.esteid.updater.plist
+rm -fR /Applications/Utilities/EstEIDSU.app
+
+echo 'Removing Preferences'
+rm -fr /Library/PreferencePanes/EstEIDPP.prefPane
+
+echo 'Removing Safari plug-in'
+rm -rf /Library/Internet\ Plug-Ins/EstEIDWP.plugin
+rm -rf /Library/Internet\ Plug-Ins/esteid.plugin
+
+echo 'Removing Finder plug-in'
+rm -rf /Library/Contextual\ Menu\ Items/EstEIDCM.plugin
+
+echo 'Removing Digidoc libraries'
+rm -rf /usr/local/etc/digidoc.conf
+rm -rf /usr/local/etc/digidocpp
+rm -rf /usr/local/share/libdigidoc
+rm -rf /usr/local/lib/libdigidoc.dylib
+rm -rf /usr/local/lib/libdigidocpp.dylib
+rm -rf /usr/local/lib/libp11.dylib
+
+echo 'Removing .plist files'
+rm -rf ~/Library/Preferences/com.estonian-ienvd-card.plist
+rm -rf ~/Library/Preferences/org.esteid.*
+
+echo 'Removing Digidoc Crypto'
+rm -rf /Applications/Utilities/qdigidoccrypto.app 
+
+#UNINSTALLS RIA PACKAGE
+
+echo 'Removing Applications'
+rm -rf /Applications/qdigidoccrypto.app
+if $(codesign -d -vv /Applications/qdigidocclient.app 2>&1 |grep --quiet "3rd Party Mac Developer Application: Riigi Infosüsteemi Amet\|Apple Mac OS Application Signing");
+then
+    echo "qdigidocclient is appstore version";
+else
+    rm -rf /Applications/qdigidocclient.app
+fi
+
+if $(codesign -d -vv /Applications/qesteidutil.app 2>&1 |grep --quiet "3rd Party Mac Developer Application: Riigi Infosüsteemi Amet\|Apple Mac OS Application Signing"); 
+then 
+    echo "qesteidutil is appstore version"; 
+else
+    rm -rf /Applications/qesteidutil.app;
+fi
+
+echo 'Removing EstonianIDCard libraries'
+rm -rf /Library/EstonianIDCard
+
+echo 'Removing browser plug-ins'
+rm -rf /Library/Internet\ Plug-Ins/esteidsafariplugin.webplugin
+rm -rf /Library/Internet\ Plug-Ins/esteidfirefoxplugin.webplugin
+rm -rf /Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app
+rm -rf /Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json
+rm -rf /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
+
+echo 'Removing digidocpp configurations'
+rm -rf /usr/etc/digidocpp
+rm -rf /usr/bin/cdigidoc
+rm -rf /usr/include/libdigidoc
+rm -rf /usr/include/libdigidocpp
+rm -rf /usr/lib/libdigidoc*.dylib
+rm -rf /usr/lib/pkconfig/libdigidocpp.pc
+
+echo 'Remove old package references'
+rm -rf /var/db/receipts/ee.sk.id*
+
+echo 'Remove old updater'
+launchctl unload /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
+rm -rf /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
+
+echo 'Remove certificates from keychain'
+certs=(
+"C9A8B9E755805E58E35377A725EBAFC37B27CCD7" #EE Certification Centre Root CA
+"305D9B273E698527625B64CCCBAFBFDB32A64264" #ESTEID-SK 2007
+"46267416F753B3128062230F9C1FB0AB7D3EEC1A" #ESTEID-SK 2011
+"6FC502FA7460ED72D697F2CD42261D318B6C8FB1" #EID-SK
+"B0BD36EBCA18FE230D1C01BE3BAA7ED017F8B6A0" #EID-SK 2007
+"E6BE0933B0E896E2133D0CBCFBD7434B5B13F5D2" #EID-SK 2011
+"D8175A44F750B5D0F12810A6C2404B37B2428289" #ESTEID-SK
+"AE2AC620C6E86CAEADC87EAB31E5D46720634220" #KLASS3-SK
+"189DD3C916D142697D4EAC079A2143BB8C05E140" #KLASS3-SK 2010
+"ADC8EC18D584E49A6F8E83C4908EF83EF950DEBE" #KLASS3-SK 2010
+"D7AD7586DEABC5A4498D67ABA189C91D6FC8DE46" #TEST of EID-SK 2011
+"E9D39B86BB194357A8AC9043EFA9BEC65E8AC264" #TEST of KLASS3-SK 2010
+"7539613C0FE79F90678E3059B33D8E6FF4300E9C" #SK OCSP RESPONDER 2011
+"4502C2CDCB9E0D50A6BF67F394C76C4294CE0F91" #EID-SK OCSP RESPONDER
+"68044C74BA76BC5A014E670D1DF95330C3F9B844" #EID-SK OCSP RESPONDER
+"19C0BE3A1D36A80C49DA243DE49C8BF33B8D85ED" #EID-SK 2007 OCSP RESPONDER
+"BD94B230A3D8EC4BE177B29FEBB30758CD87AA32" #EID-SK 2007 OCSP RESPONDER 2010
+"CA2F9FE42A1F66926CB1672D87F7719550B0C707" #ESTEID-SK OCSP RESPONDER
+"8240734319461A9B58478A6788D549106B200E2A" #ESTEID-SK OCSP RESPONDER 2005
+"FDD72A932E8F7B85FCE56336A10985D76A2B82BE" #ESTEID-SK 2007 OCSP RESPONDER
+"C5D9E7BBA16EA652CA0134CB7E61C579CD638F46" #ESTEID-SK 2007 OCSP RESPONDER 2010
+"DA4755F8B271D1BE0053B6018FBD6518A3D45F44" #KLASS3-SK OCSP RESPONDER
+"EBCA92E96DD128FD38D50FC75CF37FDEFB4ED8DE" #KLASS3-SK OCSP RESPONDER
+"50A91BF1FC072CD2A308BD64A6D9FE73EDABC24C" #KLASS3-SK OCSP RESPONDER 2009
+"554E3A0CF85E3591EFB1F03CCD9B2E24B4A4F880" #KLASS3-SK 2010 OCSP RESPONDER
+"A381C89CE5DAD9F60E9BECF1A7C172DD2DA821DB" #TEST Juur-SK
+"0A9CDA774D5114D566FE583B97D1EA10BDA8DAD6" #TEST-SK
+"376C05467113CB4152E4DABFFEA46ACBA605C741" #TEST of EE Certification Centre Root CA
+"BA4239EDC40D74746D1A0603A517FB1D3B17E591" #TEST of ESTEID-SK 2011
+"38AA5F39E11E3D6D7D946AE467FD7E5D1504677B" #TEST-SK OCSP RESPONDER 2005
+"7D050D94501404F52CABF8BF9FFD737F559542AC" #TEST of SK OCSP RESPONDER 2011
+)
+for i in "${certs[@]}"
+do
+    security delete-certificate -t -Z "$i" 2> /dev/null
+done
+
+echo 'Uninstall done!'
