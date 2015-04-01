@@ -8,6 +8,8 @@ else
     cp ${SOURCE}/background_release.png background.png
 fi
 cp ${SOURCE}/License.txt .
+cp -r ${SOURCE}/scripts .
+defaults write $PWD/scripts/version.plist version $1
 
 if [ -z "$2" ]
 then
@@ -18,7 +20,7 @@ fi
 
 mkdir -p root packages packages-dbg
 
-pkgbuild "${ARGS[@]}" --root root --scripts ${SOURCE}/scripts --id ee.ria.estonianidcard \
+pkgbuild "${ARGS[@]}" --root root --scripts scripts --id ee.ria.estonianidcard \
     packages/estonianidcard.pkg
 productbuild "${ARGS[@]}" --distribution ${SOURCE}/estonianidcard.dist.xml \
     --package-path packages/ --resources . estonianidcard.pkg
@@ -35,4 +37,4 @@ hdiutil create estonianidcard_$1.dmg -ov -volname estonianidcard \
     -srcfolder .DS_Store
 
 rmdir root
-rm .DS_Store background.png estonianidcard.pkg License.txt
+rm -rf .DS_Store background.png estonianidcard.pkg License.txt scripts

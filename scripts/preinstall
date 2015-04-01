@@ -24,7 +24,6 @@ rm -fR /Library/Application\ Support/Mozilla/Extensions/{92650c4d-4b8e-4d2a-b7eb
 rm -fR /Library/Application\ Support/Mozilla/Extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{aa84ce40-4253-11da-8cd6-0800200c9a66}
 
 echo 'Removing Updater'
-rm -fR /Library/Receipts/org.esteid.*
 rm -f /Library/LaunchAgents/org.esteid.updater.plist
 rm -fR /Applications/Utilities/EstEIDSU.app
 
@@ -37,18 +36,6 @@ rm -rf /Library/Internet\ Plug-Ins/esteid.plugin
 
 echo 'Removing Finder plug-in'
 rm -rf /Library/Contextual\ Menu\ Items/EstEIDCM.plugin
-
-echo 'Removing Digidoc libraries'
-rm -rf /usr/local/etc/digidoc.conf
-rm -rf /usr/local/etc/digidocpp
-rm -rf /usr/local/share/libdigidoc
-rm -rf /usr/local/lib/libdigidoc.dylib
-rm -rf /usr/local/lib/libdigidocpp.dylib
-rm -rf /usr/local/lib/libp11.dylib
-
-echo 'Removing .plist files'
-rm -rf ~/Library/Preferences/com.estonian-ienvd-card.plist
-rm -rf ~/Library/Preferences/org.esteid.*
 
 echo 'Removing Digidoc Crypto'
 rm -rf /Applications/Utilities/qdigidoccrypto.app 
@@ -70,6 +57,12 @@ then
 else
     rm -rf /Applications/qesteidutil.app;
 fi
+
+echo 'Removing EstEID.tokend'
+rm -rf /System/Library/Security/tokend/EstEID.tokend
+
+echo 'Clearing tokens cache'
+rm -rf /var/db/TokenCache/tokens/*
 
 echo 'Removing EstonianIDCard libraries'
 rm -rf /Library/EstonianIDCard
@@ -94,7 +87,7 @@ rm -rf /var/db/receipts/ee.sk.id*
 
 echo 'Remove old updater'
 launchctl unload /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
-rm -rf /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
+rm -f /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
 
 echo 'Remove certificates from keychain'
 certs=(
@@ -135,4 +128,4 @@ do
     security delete-certificate -t -Z "$i" 2> /dev/null
 done
 
-echo 'Uninstall done!'
+exit 0

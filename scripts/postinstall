@@ -1,10 +1,12 @@
 #!/bin/sh
 
 updater=/Library/PreferencePanes/id-updater.prefPane/Contents/Resources/id-updater-helper
+echo "Activating updater $updater"
 ${updater} -weekly || echo "error in command ${updater} -weekly"
 ${updater} -chrome-npapi || echo "error in command ${updater} -chrome-npapi"
 
 version=$(defaults read $PWD/version.plist version)
+echo "Setting version info for qdigidoc/qesteidutil $version"
 defaults write /Library/Preferences/ee.ria.qesteidutil plugins "${version}"
 defaults write /Library/Preferences/ee.ria.qdigidocclient plugins "${version}"
 
