@@ -1,8 +1,15 @@
+Packaging version 3.10.2 release notes
+--------------------------------------
+Changes compared to ver 3.10
+
+- Added functionality for enabling NPAPI support in Chrome. OSX installer checks if Chrome is running and executes Updater. The -chrome-npapi flag is set by Updater.
+
+
 Packaging version 3.10 release notes
 --------------------------------------
 Changes compared to ver 3.9.1
 
-- Changed OSX installation package, SK's certificates are no longer installed to keychain, previously installed SK certificates are removed. The SK CA certificates are distributed through the operating system's native update mechanism. The CA certificates used by DigiDoc3 Client are now taken from TSL (Trust Service Status List).
+- Changed OSX installation package, SK's certificates are no longer installed to keychain, previously installed SK certificates are removed. The SK CA certificates are distributed through the operating system's native update mechanism. The CA certificates used by DigiDoc3 Client are now taken from TSL (Trust Service Status List).	
 - Upgraded signing of OSX distribution packages, v2 signature is now used. 
 - Removed Safari browser signing plug-in from OSX installation package, Firefox NPAPI plug-in is used instead. 
 
