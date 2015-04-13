@@ -4,7 +4,7 @@
     <allowed-os-versions>
         <os-version min="10.7"/>
     </allowed-os-versions>
-    <options customize="never" require-scripts="false" rootVolumeOnly="true"/><!-- hostArchitectures="x86_64"/-->
+    <options customize="never" require-scripts="false" rootVolumeOnly="true" hostArchitectures="x86_64"/>
     <!--domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/-->
     <background file="background.png"/>
     <welcome language="et" mime-type="text/rtf"><![CDATA[{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf400
@@ -108,8 +108,7 @@ Additional software is available in App Store:\
 <![CDATA[
 "SU_TITLE" = "Eesti ID kaardi tarkvara";
 "SU_ERROR" = "Viga";
-"SU_64BIT" = "Protsessor peab toetama 64 bit arhitektuuri";
-"SU_POWERPC" = "PowerPC ei ole toetatud.";
+"SU_10103" = "OS X peab olema 10.10.3 või uuem.";
 "SU_MIN" = "OS X peab olema 10.7 (Lion) või uuem.";
 ]]>
         </strings>
@@ -117,8 +116,7 @@ Additional software is available in App Store:\
 <![CDATA[
 "SU_TITLE" = "Estonian ID Card Software";
 "SU_ERROR" = "Error";
-"SU_64BIT" = "Processor must support 64 bit architecture";
-"SU_POWERPC" = "PowerPC is not supported.";
+"SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
 "SU_MIN" = "OS X must be 10.7 (Lion) or newer.";
 ]]>
         </strings>
@@ -126,8 +124,7 @@ Additional software is available in App Store:\
 <![CDATA[
 "SU_TITLE" = "Estonian ID Card Software";
 "SU_ERROR" = "Error";
-"SU_64BIT" = "Processor must support 64 bit architecture";
-"SU_POWERPC" = "PowerPC is not supported.";
+"SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
 "SU_MIN" = "OS X must be 10.7 (Lion) or newer.";
 ]]>
         </strings>
@@ -136,21 +133,16 @@ Additional software is available in App Store:\
     <script>
 <![CDATA[
 function pm_install_check() {
-  if(system.sysctl('hw.machine') == 'powerpc') {
-    my.result.title = system.localizedString('SU_ERROR');
-    my.result.message = system.localizedString('SU_POWERPC');
-    my.result.type = 'Fatal';
-    return false;
-  }
   if(system.compareVersions(system.version.ProductVersion, '10.7') < 0) {
     my.result.title = system.localizedString('SU_ERROR');
     my.result.message = system.localizedString('SU_MIN');
     my.result.type = 'Fatal';
     return false;
   }
-  if(system.sysctl('hw.cpu64bit_capable') == '0') {
+  if(system.compareVersions(system.version.ProductVersion, '10.10.0') >= 0 &&
+     system.compareVersions(system.version.ProductVersion, '10.10.3') < 0) {
     my.result.title = system.localizedString('SU_ERROR');
-    my.result.message = system.localizedString('SU_64BIT');
+    my.result.message = system.localizedString('SU_10103');
     my.result.type = 'Fatal';
     return false;
   }
