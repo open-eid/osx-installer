@@ -85,9 +85,11 @@ rm -rf /usr/lib/pkconfig/libdigidocpp.pc
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.sk.id*
 
-echo 'Remove old updater'
-launchctl unload /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
-rm -f /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
+if [ -e "/Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist" ]; then
+	echo 'Remove old updater'
+	launchctl unload /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
+	rm -f /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
+fi
 
 echo 'Remove certificates from keychain'
 certs=(
