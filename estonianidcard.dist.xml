@@ -109,7 +109,6 @@ Additional software is available in App Store:\
 "SU_TITLE" = "Eesti ID kaardi tarkvara";
 "SU_ERROR" = "Viga";
 "SU_10103" = "OS X peab olema 10.10.3 või uuem.";
-"SU_MIN" = "OS X peab olema 10.7 (Lion) või uuem.";
 ]]>
         </strings>
         <strings language="en">
@@ -117,7 +116,6 @@ Additional software is available in App Store:\
 "SU_TITLE" = "Estonian ID Card Software";
 "SU_ERROR" = "Error";
 "SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
-"SU_MIN" = "OS X must be 10.7 (Lion) or newer.";
 ]]>
         </strings>
         <strings language="ru">
@@ -125,7 +123,6 @@ Additional software is available in App Store:\
 "SU_TITLE" = "Estonian ID Card Software";
 "SU_ERROR" = "Error";
 "SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
-"SU_MIN" = "OS X must be 10.7 (Lion) or newer.";
 ]]>
         </strings>
     </localization>
@@ -133,12 +130,6 @@ Additional software is available in App Store:\
     <script>
 <![CDATA[
 function pm_install_check() {
-  if(system.compareVersions(system.version.ProductVersion, '10.7') < 0) {
-    my.result.title = system.localizedString('SU_ERROR');
-    my.result.message = system.localizedString('SU_MIN');
-    my.result.type = 'Fatal';
-    return false;
-  }
   if(system.compareVersions(system.version.ProductVersion, '10.10.0') >= 0 &&
      system.compareVersions(system.version.ProductVersion, '10.10.3') < 0) {
     my.result.title = system.localizedString('SU_ERROR');
@@ -163,18 +154,18 @@ function pm_driversold_selected() {
         <line choice="driversold"/>
         <line choice="default"/>
     </choices-outline>
-    <choice id="default" start_selected="true">
+    <choice id="default" title="Base components" start_selected="true">
         <pkg-ref id="ee.ria.esteidfirefoxplugin">esteidfirefoxplugin.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteidpkcs11loader">esteidpkcs11loader.pkg</pkg-ref>
         <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
         <pkg-ref id="ee.ria.estonianidcard">estonianidcard.pkg</pkg-ref>
     </choice>
-    <choice id="drivers1010" start_selected="true" selected="pm_drivers1010_selected()">
+    <choice id="drivers1010" title="New drivers" start_selected="true" selected="pm_drivers1010_selected()">
         <pkg-ref id="ee.ria.esteid-pkcs11">esteid-pkcs11.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
     </choice>
-    <choice id="driversold" start_selected="false" selected="pm_driversold_selected()">
+    <choice id="driversold" title="Old drivers" start_selected="false" selected="pm_driversold_selected()">
         <pkg-ref id="ee.ria.esteid-pkcs11-old">esteid-pkcs11-old.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend-old">esteid-tokend-old.pkg</pkg-ref>
     </choice>
