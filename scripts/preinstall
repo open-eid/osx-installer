@@ -59,6 +59,7 @@ else
 fi
 
 echo 'Removing EstEID.tokend'
+rm -rf /Library/Security/tokend/EstEID.tokend
 rm -rf /System/Library/Security/tokend/EstEID.tokend
 
 echo 'Clearing tokens cache'

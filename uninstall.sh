@@ -24,6 +24,7 @@ function remove_all {
     sudo rm -rf /Library/Application\ Support/Mozilla/Extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{aa84ce40-4253-a00a-8cd6-0800200f9a66}
 
     echo 'Removing Tokend plugin'
+    sudo rm -rf /Library/Security/tokend/EstEID.tokend
     sudo rm -rf /System/Library/Security/tokend/EstEID.tokend
 
     echo 'Removing EstonianIDCard libraries'
