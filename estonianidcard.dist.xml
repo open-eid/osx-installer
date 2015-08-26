@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/DistributionDefinitionRef/
+https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/InstallerJavaScriptRef/
+-->
 <installer-gui-script minSpecVersion="2">
     <title>SU_TITLE</title>
     <allowed-os-versions>
         <os-version min="10.7"/>
     </allowed-os-versions>
-    <options customize="never" require-scripts="false" rootVolumeOnly="true" hostArchitectures="x86_64"/>
+    <options customize="allow" require-scripts="false" rootVolumeOnly="true" hostArchitectures="x86_64"/>
     <!--domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/-->
     <background file="background.png"/>
     <license file="License.txt"/>
@@ -109,6 +113,12 @@ T\'e4iendavalt tuleb arvutisse paigaldada App Store-st:\
 "SU_TITLE" = "Estonian ID Card Software";
 "SU_ERROR" = "Error";
 "SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
+"SU_BASE" = "Base components";
+"SU_SAFARI" = "Safari support";
+"SU_FIREFOX" = "Firefox support";
+"SU_CHROME" = "Google Chrome support";
+"SU_DRIVERSNEW" = "Drivers for OSX 10.10 and newer";
+"SU_DRIVERSOLD" = "Drivers for OSX 10.9 and older";
 ]]>
         </strings>
         <strings language="et">
@@ -116,6 +126,12 @@ T\'e4iendavalt tuleb arvutisse paigaldada App Store-st:\
 "SU_TITLE" = "Eesti ID kaardi tarkvara";
 "SU_ERROR" = "Viga";
 "SU_10103" = "OS X peab olema 10.10.3 või uuem.";
+"SU_BASE" = "Baas komponendid";
+"SU_SAFARI" = "Safari tugi";
+"SU_FIREFOX" = "Firefox tugi";
+"SU_CHROME" = "Google Chrome tugi";
+"SU_DRIVERSNEW" = "Draiverid OSX 10.10 ja uuemad";
+"SU_DRIVERSOLD" = "Draiverid OSX 10.9 ja vanemad";
 ]]>
         </strings>
         <strings language="ru">
@@ -123,6 +139,12 @@ T\'e4iendavalt tuleb arvutisse paigaldada App Store-st:\
 "SU_TITLE" = "Estonian ID Card Software";
 "SU_ERROR" = "Error";
 "SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
+"SU_BASE" = "Base components";
+"SU_SAFARI" = "Safari support";
+"SU_FIREFOX" = "Firefox support";
+"SU_CHROME" = "Google Chrome support";
+"SU_DRIVERSNEW" = "Drivers for OSX 10.10 and newer";
+"SU_DRIVERSOLD" = "Drivers for OSX 10.9 and older";
 ]]>
         </strings>
     </localization>
@@ -150,22 +172,32 @@ function pm_driversold_selected() {
 ]]>
     </script>
     <choices-outline>
+        <line choice="default"/>
+        <line choice="safari"/>
+        <line choice="firefox"/>
+        <line choice="chrome"/>
         <line choice="drivers1010"/>
         <line choice="driversold"/>
-        <line choice="default"/>
     </choices-outline>
-    <choice id="default" title="Base components" start_selected="true">
-        <pkg-ref id="ee.ria.esteidfirefoxplugin">esteidfirefoxplugin.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.esteidpkcs11loader">esteidpkcs11loader.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
+    <choice id="default" title="SU_BASE" enabled="false" visible="false">
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
         <pkg-ref id="ee.ria.estonianidcard">estonianidcard.pkg</pkg-ref>
     </choice>
-    <choice id="drivers1010" title="New drivers" start_selected="true" selected="pm_drivers1010_selected()">
+    <choice id="safari" title="SU_SAFARI">
+        <pkg-ref id="ee.ria.esteidfirefoxplugin">esteidfirefoxplugin.pkg</pkg-ref>
+    </choice>
+    <choice id="firefox" title="SU_FIREFOX">
+        <pkg-ref id="ee.ria.esteidfirefoxplugin">esteidfirefoxplugin.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteidpkcs11loader">esteidpkcs11loader.pkg</pkg-ref>
+    </choice>
+    <choice id="chrome" title="SU_CHROME">
+        <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
+    </choice>
+    <choice id="drivers1010" title="SU_DRIVERSNEW" selected="pm_drivers1010_selected()" enabled="pm_drivers1010_selected()">
         <pkg-ref id="ee.ria.esteid-pkcs11">esteid-pkcs11.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
     </choice>
-    <choice id="driversold" title="Old drivers" start_selected="false" selected="pm_driversold_selected()">
+    <choice id="driversold" title="SU_DRIVERSOLD" start_selected="false" selected="pm_driversold_selected()" enabled="pm_driversold_selected()">
         <pkg-ref id="ee.ria.esteid-pkcs11-old">esteid-pkcs11-old.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend-old">esteid-tokend-old.pkg</pkg-ref>
     </choice>
