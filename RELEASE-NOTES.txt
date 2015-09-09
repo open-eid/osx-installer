@@ -1,3 +1,17 @@
+Packaging version 3.11.1 release notes
+--------------------------------------
+Changes compared to ver 3.10.3
+
+- Changed install path from /System/Library/Security/tokend to /Library/Security/tokend since on OS X 10.11 the entire /System folder is write protected by the kernel.
+- Require service pack 3 on OSX 10.10
+- Updated components:
+https://github.com/open-eid/esteid-tokend/releases/tag/v3.11.0-beta
+https://github.com/open-eid/esteid-pkcs11/releases/tag/v3.11.0-beta
+https://github.com/open-eid/firefox-pkcs11-loader/releases/tag/v3.11.0
+https://github.com/open-eid/chrome-token-signing/releases/tag/v1.0.2-beta2
+https://github.com/open-eid/updater/releases/tag/v3.11.0
+
+
 Packaging version 3.11 release notes
 --------------------------------------
 Changes compared to ver 3.10.2
