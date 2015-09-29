@@ -85,7 +85,17 @@ rm -rf /usr/lib/libdigidoc*.dylib
 rm -rf /usr/lib/pkconfig/libdigidocpp.pc
 
 echo 'Remove old package references'
-rm -rf /var/db/receipts/ee.sk.id*
+rm -rf /var/db/receipts/ee.sk.id* \
+	/var/db/receipts/ee.ria.estonianidcard.* \
+	/var/db/receipts/ee.ria.ID-updater.* \
+	/var/db/receipts/ee.ria.chrome-token-signing.* \
+	/var/db/receipts/ee.ria.esteid-pkcs11.* \
+	/var/db/receipts/ee.ria.esteid-tokend.* \
+	/var/db/receipts/ee.ria.esteidfirefoxplugin.* \
+	/var/db/receipts/ee.ria.esteidpkcs11loader.* \
+	/var/db/receipts/ee.ria.firefox-pkcs11-loader.* \
+	/var/db/receipts/ee.ria.firefox-token-signing.*
+
 
 if [ -e "/Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist" ]; then
 	echo 'Remove old updater'

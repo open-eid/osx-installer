@@ -162,11 +162,37 @@ function pm_install_check() {
   return true;
 }
 
+function pm_safari_selected() {
+  return my.target.receiptForIdentifier("ee.ria.estonianidcard") == null ||
+    my.target.receiptForIdentifier("ee.ria.firefox-token-signing") != null;
+}
+
+function pm_firefox_selected() {
+  return my.target.receiptForIdentifier("ee.ria.estonianidcard") == null ||
+    my.target.receiptForIdentifier("ee.ria.firefox-pkcs11-loader") != null;
+}
+
+function pm_chrome_selected() {
+  return my.target.receiptForIdentifier("ee.ria.estonianidcard") == null ||
+    my.target.receiptForIdentifier("ee.ria.chrome-token-signing") != null;
+}
+
 function pm_drivers1010_selected() {
-  return system.compareVersions(system.version.ProductVersion, '10.10') >= 0;
+  return (my.target.receiptForIdentifier("ee.ria.estonianidcard") == null &&
+    system.compareVersions(system.version.ProductVersion, '10.10') >= 0) ||
+    my.target.receiptForIdentifier("ee.ria.esteid-tokend") != null;
 }
 
 function pm_driversold_selected() {
+  return (my.target.receiptForIdentifier("ee.ria.estonianidcard") == null &&
+    system.compareVersions(system.version.ProductVersion, '10.10') < 0) ||
+    my.target.receiptForIdentifier("ee.ria.esteid-tokend-old") != null;
+}
+function pm_drivers1010_enabled() {
+  return system.compareVersions(system.version.ProductVersion, '10.10') >= 0;
+}
+
+function pm_driversold_enabled() {
   return system.compareVersions(system.version.ProductVersion, '10.10') < 0;
 }
 ]]>
@@ -179,25 +205,25 @@ function pm_driversold_selected() {
         <line choice="drivers1010"/>
         <line choice="driversold"/>
     </choices-outline>
-    <choice id="default" title="SU_BASE" enabled="false" visible="false">
+    <choice id="default" title="SU_BASE" start_enabled="false" visible="false">
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
         <pkg-ref id="ee.ria.estonianidcard">estonianidcard.pkg</pkg-ref>
     </choice>
-    <choice id="safari" title="SU_SAFARI">
+    <choice id="safari" title="SU_SAFARI" start_selected="pm_safari_selected()">
         <pkg-ref id="ee.ria.esteidfirefoxplugin">firefox-token-signing.pkg</pkg-ref>
     </choice>
-    <choice id="firefox" title="SU_FIREFOX">
+    <choice id="firefox" title="SU_FIREFOX" start_selected="pm_firefox_selected()">
         <pkg-ref id="ee.ria.esteidfirefoxplugin">firefox-token-signing.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteidpkcs11loader">firefox-pkcs11-loader.pkg</pkg-ref>
     </choice>
-    <choice id="chrome" title="SU_CHROME">
+    <choice id="chrome" title="SU_CHROME" start_selected="pm_chrome_selected()">
         <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
     </choice>
-    <choice id="drivers1010" title="SU_DRIVERSNEW" selected="pm_drivers1010_selected()" enabled="pm_drivers1010_selected()">
+    <choice id="drivers1010" title="SU_DRIVERSNEW" start_selected="pm_drivers1010_selected()" start_enabled="pm_drivers1010_enabled()">
         <pkg-ref id="ee.ria.esteid-pkcs11">esteid-pkcs11.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
     </choice>
-    <choice id="driversold" title="SU_DRIVERSOLD" start_selected="false" selected="pm_driversold_selected()" enabled="pm_driversold_selected()">
+    <choice id="driversold" title="SU_DRIVERSOLD" start_selected="pm_driversold_selected()" start_enabled="pm_driversold_enabled()">
         <pkg-ref id="ee.ria.esteid-pkcs11-old">esteid-pkcs11-old.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend-old">esteid-tokend-old.pkg</pkg-ref>
     </choice>
