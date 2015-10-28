@@ -184,11 +184,11 @@ function pm_driversold_selected() {
         <pkg-ref id="ee.ria.estonianidcard">estonianidcard.pkg</pkg-ref>
     </choice>
     <choice id="safari" title="SU_SAFARI">
-        <pkg-ref id="ee.ria.esteidfirefoxplugin">esteidfirefoxplugin.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteidfirefoxplugin">firefox-token-signing.pkg</pkg-ref>
     </choice>
     <choice id="firefox" title="SU_FIREFOX">
-        <pkg-ref id="ee.ria.esteidfirefoxplugin">esteidfirefoxplugin.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.esteidpkcs11loader">esteidpkcs11loader.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteidfirefoxplugin">firefox-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteidpkcs11loader">firefox-pkcs11-loader.pkg</pkg-ref>
     </choice>
     <choice id="chrome" title="SU_CHROME">
         <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
