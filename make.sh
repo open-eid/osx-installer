@@ -18,23 +18,21 @@ else
     ARGS=(--version $1 --sign "$2")
 fi
 
-mkdir -p root packages packages-dbg
+mkdir -p root packages
 
-pkgbuild "${ARGS[@]}" --root root --scripts scripts --id ee.ria.estonianidcard \
-    packages/estonianidcard.pkg
-productbuild "${ARGS[@]}" --distribution ${SOURCE}/estonianidcard.dist.xml \
-    --package-path packages/ --resources . estonianidcard.pkg
-productbuild "${ARGS[@]}" --distribution ${SOURCE}/estonianidcard-dbg.dist.xml \
-    --package-path packages-dbg/ estonianidcard-dbg_$1.pkg
+pkgbuild "${ARGS[@]}" --root root --scripts scripts --id ee.ria.open-eid \
+    packages/open-eid.pkg
+productbuild "${ARGS[@]}" --distribution ${SOURCE}/distribution.xml \
+    --package-path packages/ --resources . Open-EID.pkg
 
-setfile -a E estonianidcard.pkg
+setfile -a E Open-EID.pkg
 setfile -a V background.png
 cp ${SOURCE}/DS_Store .DS_Store
-hdiutil create estonianidcard_$1.dmg -ov -volname estonianidcard \
-    -srcfolder estonianidcard.pkg \
+hdiutil create Open-EID_$1.dmg -ov -volname Open-EID \
+    -srcfolder Open-EID.pkg \
     -srcfolder ${SOURCE}/uninstall.sh \
     -srcfolder background.png \
     -srcfolder .DS_Store
 
 rmdir root
-rm -rf .DS_Store background.png estonianidcard.pkg License.txt scripts
+rm -rf .DS_Store background.png Open-EID.pkg License.txt scripts

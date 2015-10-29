@@ -66,6 +66,7 @@ rm -rf /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchn
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.sk.id* \
 	/var/db/receipts/ee.ria.estonianidcard.* \
+	/var/db/receipts/ee.ria.open-eid.* \
 	/var/db/receipts/ee.ria.ID-updater.* \
 	/var/db/receipts/ee.ria.chrome-token-signing.* \
 	/var/db/receipts/ee.ria.esteid-pkcs11* \

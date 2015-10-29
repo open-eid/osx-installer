@@ -101,7 +101,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
     <localization>
         <strings language="en">
 <![CDATA[
-"SU_TITLE" = "Estonian ID Card Software";
+"SU_TITLE" = "eID Software";
 "SU_ERROR" = "Error";
 "SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
 "SU_BASE" = "Base components";
@@ -114,7 +114,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
         </strings>
         <strings language="et">
 <![CDATA[
-"SU_TITLE" = "Eesti ID kaardi tarkvara";
+"SU_TITLE" = "eID tarkvara";
 "SU_ERROR" = "Viga";
 "SU_10103" = "OS X peab olema 10.10.3 või uuem.";
 "SU_BASE" = "Baas komponendid";
@@ -127,7 +127,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
         </strings>
         <strings language="ru">
 <![CDATA[
-"SU_TITLE" = "Estonian ID Card Software";
+"SU_TITLE" = "eID Software";
 "SU_ERROR" = "Error";
 "SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
 "SU_BASE" = "Base components";
@@ -154,28 +154,28 @@ function pm_install_check() {
 }
 
 function pm_safari_selected() {
-  return my.target.receiptForIdentifier("ee.ria.estonianidcard") == null ||
+  return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     my.target.receiptForIdentifier("ee.ria.firefox-token-signing") != null;
 }
 
 function pm_firefox_selected() {
-  return my.target.receiptForIdentifier("ee.ria.estonianidcard") == null ||
+  return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     my.target.receiptForIdentifier("ee.ria.firefox-pkcs11-loader") != null;
 }
 
 function pm_chrome_selected() {
-  return my.target.receiptForIdentifier("ee.ria.estonianidcard") == null ||
+  return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     my.target.receiptForIdentifier("ee.ria.chrome-token-signing") != null;
 }
 
 function pm_drivers1010_selected() {
-  return (my.target.receiptForIdentifier("ee.ria.estonianidcard") == null &&
+  return (my.target.receiptForIdentifier("ee.ria.open-eid") == null &&
     system.compareVersions(system.version.ProductVersion, '10.10') >= 0) ||
     my.target.receiptForIdentifier("ee.ria.esteid-tokend") != null;
 }
 
 function pm_driversold_selected() {
-  return (my.target.receiptForIdentifier("ee.ria.estonianidcard") == null &&
+  return (my.target.receiptForIdentifier("ee.ria.open-eid") == null &&
     system.compareVersions(system.version.ProductVersion, '10.10') < 0) ||
     my.target.receiptForIdentifier("ee.ria.esteid-tokend-old") != null;
 }
@@ -198,7 +198,7 @@ function pm_driversold_enabled() {
     </choices-outline>
     <choice id="default" title="SU_BASE" start_enabled="false" visible="false">
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.estonianidcard">estonianidcard.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.open-eid">Open-EID.pkg</pkg-ref>
     </choice>
     <choice id="safari" title="SU_SAFARI" description="SU_SAFARI" start_selected="pm_safari_selected()">
         <pkg-ref id="ee.ria.esteidfirefoxplugin">firefox-token-signing.pkg</pkg-ref>

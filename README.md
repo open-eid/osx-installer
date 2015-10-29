@@ -10,8 +10,8 @@ A .DMG with DigiDoc, ID-card utility and package with various drivers.
 
 2. Download dependencies to packages folder
    * chrome-token-signing
-   * esteidfirefoxplugin
-   * esteidpkcs11loader
+   * firefox-token-signing
+   * firefox-pkcs11-loader
    * esteid-pkcs11
    * esteid-pkcs11-old
    * esteid-tokend
@@ -24,7 +24,7 @@ A .DMG with DigiDoc, ID-card utility and package with various drivers.
 
 4. Execute
 
-        open estonianidcard_3.11.0.0.BETA.dmg 
+        open Open-EID_3.11.0.0.BETA.dmg 
 
 ## Support
 Official builds are provided through official distribution point [installer.id.ee](https://installer.id.ee). If you want support, you need to be using official builds. Contact for assistance by email [abi@id.ee](mailto:abi@id.ee) or [www.id.ee](http://www.id.ee).

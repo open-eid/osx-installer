@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# UNINSTALLS ESTONIAN ID CARD SOFTWARE
+# UNINSTALLS Open-EID SOFTWARE
 
 function remove_all {
 
@@ -22,10 +22,10 @@ function remove_all {
     sudo rm -rf /Library/Security/tokend/EstEID.tokend
     sudo rm -rf /System/Library/Security/tokend/EstEID.tokend
 
-    echo 'Removing EstonianIDCard libraries'
+    echo 'Removing libraries'
     sudo rm -rf /Library/EstonianIDCard
 
-    sudo rm -rf /var/db/receipts/ee.ria.estonianidcard.* \
+    sudo rm -rf /var/db/receipts/ee.ria.open-eid.* \
         /var/db/receipts/ee.ria.ID-updater.* \
         /var/db/receipts/ee.ria.chrome-token-signing.* \
         /var/db/receipts/ee.ria.esteid-pkcs11* \
@@ -37,7 +37,7 @@ function remove_all {
     echo 'Uninstall done!'
 }
 
-read -n1 -p 'Uninstall Estonian ID Card Software? [y/N] '
+read -n1 -p 'Uninstall Open-EID Software? [y/N] '
 echo
 
 case $REPLY in
