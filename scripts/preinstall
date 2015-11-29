@@ -1,23 +1,9 @@
 #!/bin/bash
 
 #UNINSTALLS IDEELABOR PACKAGE
-if [ -e /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib.1.3.9 ]; then
-  rm /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib
-  rm /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib.1.3.9
-  mv /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib.1.3.8 /usr/libexec/SmartCardServices/drivers/ifd-ccid.bundle/Contents/MacOS/libccid.dylib
-fi
-
 rm -rf /Library/Internet\ Plug-Ins/npidcard.plugin
 
 #UNINSTALLS SMARTLINK PACKAGE
-
-if [ -e "/Applications/OpenOffice.org.app/Contents/program/unopkg" ]; then
-  echo 'Removing OpenOffice'
-  /Applications/OpenOffice.org.app/Contents/program/unopkg list --shared ee.smartlink.ooo.digidoc >/dev/null
-  /Applications/OpenOffice.org.app/Contents/program/unopkg remove --shared ee.smartlink.ooo.digidoc
-  /Applications/OpenOffice.org.app/Contents/program/unopkg list --shared > /dev/null 2>&1
-fi
-
 echo 'Removing Mozilla extension'
 rm -fR /Library/Application\ Support/Mozilla/Extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/{aa84ce40-4253-11da-8cd6-0800200c9a66}
 rm -fR /Library/Application\ Support/Mozilla/Extensions/{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}/{aa84ce40-4253-11da-8cd6-0800200c9a66}
@@ -76,13 +62,6 @@ rm -rf /Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app
 rm -rf /Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json
 rm -rf /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
 
-echo 'Removing digidocpp configurations'
-rm -rf /usr/etc/digidocpp
-rm -rf /usr/bin/cdigidoc
-rm -rf /usr/include/libdigidoc
-rm -rf /usr/include/libdigidocpp
-rm -rf /usr/lib/libdigidoc*.dylib
-rm -rf /usr/lib/pkconfig/libdigidocpp.pc
 
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.sk.id* \
