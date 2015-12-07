@@ -33,8 +33,8 @@ function remove_all {
     sudo rm -rf /var/db/receipts/ee.ria.estonianidcard.* \
         /var/db/receipts/ee.ria.ID-updater.* \
         /var/db/receipts/ee.ria.chrome-token-signing.* \
-        /var/db/receipts/ee.ria.esteid-pkcs11.* \
-        /var/db/receipts/ee.ria.esteid-tokend.* \
+        /var/db/receipts/ee.ria.esteid-pkcs11* \
+        /var/db/receipts/ee.ria.esteid-tokend* \
         /var/db/receipts/ee.ria.firefox-pkcs11-loader.* \
         /var/db/receipts/ee.ria.firefox-token-signing.*
     sudo rm -rf /Library/Preferences/ee.ria.*
