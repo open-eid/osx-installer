@@ -4,14 +4,9 @@
 
 function remove_all {
 
-    sudo launchctl list | grep 'id updater task' > /dev/null
-    UPDATER_STATUS=$?
-    if [ "$UPDATER_STATUS" == "0" ] ; then
-        echo 'Periodical updates checking detected, removing...'
-        sudo /Library/PreferencePanes/id-updater.prefPane/Contents/Resources/id-updater-helper -remove
-    else
-        echo 'Periodical updates checking not detected'
-    fi
+    for user in $(dscl . list /Users |grep -v -e '^_.*' -e Guest -e root -e daemon -e nobody); do
+        sudo -u "${user}" /Library/PreferencePanes/id-updater.prefPane/Contents/Resources/id-updater-helper -remove
+    done
     sudo rm -rf /Library/PreferencePanes/id-updater.prefPane
 
     echo 'Removing browser plug-ins'

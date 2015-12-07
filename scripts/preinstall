@@ -82,6 +82,12 @@ if [ -e "/Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist" ]; then
 	rm -f /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
 fi
 
+if [ -e "/Library/LaunchAgents/ee.ria.id-updater.plist" ]; then
+	echo 'Remove old updater'
+	launchctl unload /Library/LaunchAgents/ee.ria.id-updater.plist
+	rm -f /Library/LaunchAgents/ee.ria.id-updater.plist
+fi
+
 echo 'Remove certificates from keychain'
 certs=(
 "C9A8B9E755805E58E35377A725EBAFC37B27CCD7" #EE Certification Centre Root CA

@@ -1,11 +1,13 @@
 #!/bin/sh
 
 updater=/Library/PreferencePanes/id-updater.prefPane/Contents/Resources/id-updater-helper
-echo "Activating updater $updater"
-${updater} -weekly || echo "error in command ${updater} -weekly"
+echo "Activating updater ${updater}"
+for user in $(dscl . list /Users |grep -v -e '^_.*' -e Guest -e root -e daemon -e nobody); do
+    sudo -u "${user}" ${updater} -weekly || echo "error in command ${updater} -weekly"
+done
 
 version=$(defaults read $PWD/version.plist version)
-echo "Setting version info for qdigidoc/qesteidutil $version"
+echo "Setting version info for qdigidoc/qesteidutil ${version}"
 defaults write /Library/Preferences/ee.ria.qesteidutil plugins "${version}"
 defaults write /Library/Preferences/ee.ria.qdigidocclient plugins "${version}"
 
