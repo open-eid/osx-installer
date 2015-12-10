@@ -108,8 +108,8 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 "SU_SAFARI" = "Safari browser signing support";
 "SU_FIREFOX" = "Firefox browser signing and authentication support";
 "SU_CHROME" = "Chrome browser signing support";
-"SU_DRIVERSNEW" = "Authentication support (Estonian eID), OSX10.10 or newer";
-"SU_DRIVERSOLD" = "Authentication support (Estonian eID), OSX10.9";
+"SU_DRIVERSNEW" = "Estonian ID-card support, OS X 10.10 or newer";
+"SU_DRIVERSOLD" = "Estonian ID-card support, OS X 10.9";
 ]]>
         </strings>
         <strings language="et">
@@ -121,8 +121,8 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 "SU_SAFARI" = "Safari allkirjastamise tugi";
 "SU_FIREFOX" = "Firefoxi allkirjastamise ja autentimise tugi";
 "SU_CHROME" = "Chrome'i allkirjastamise tugi";
-"SU_DRIVERSNEW" = "Autentimise tugi (Eesti ID-kaart), al. OSX10.10";
-"SU_DRIVERSOLD" = "Autentimise tugi (Eesti ID-kaart), OSX10.9.";
+"SU_DRIVERSNEW" = "Eesti ID-kaardi tugi, al. OS X 10.10";
+"SU_DRIVERSOLD" = "Eesti ID-kaardi tugi, OS X 10.9";
 ]]>
         </strings>
         <strings language="ru">
@@ -134,8 +134,8 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 "SU_SAFARI" = "Поддержка подпис. в Safari";
 "SU_FIREFOX" = "Поддержка подпис. и аутентиф. в Firefox";
 "SU_CHROME" = "Поддержка подпис. в Chrome";
-"SU_DRIVERSNEW" = "Поддержка аутентиф. (эст. ID-карта), OSX10.10 и выше";
-"SU_DRIVERSOLD" = "Поддержка аутентиф. (эст. ID-карта), OSX10.9";
+"SU_DRIVERSNEW" = "Поддержка эстонской ID-карты, OS X 10.10 и выше";
+"SU_DRIVERSOLD" = "Поддержка эстонской ID-карты, OS X 10.9";
 ]]>
         </strings>
     </localization>
