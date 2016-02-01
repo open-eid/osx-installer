@@ -1,3 +1,12 @@
+Packaging version 3.12 release notes
+--------------------------------------
+Changes compared to ver 3.11.1
+
+- Improved installation package of eID software, it is now possible during installation process to customize the set of software components that will be installed. 
+- Changed branding.
+- Updated Updater paths.
+
+
 Packaging version 3.11.1 release notes
 --------------------------------------
 Changes compared to ver 3.10.3
