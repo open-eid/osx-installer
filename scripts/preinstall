@@ -61,6 +61,8 @@ rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0
 rm -rf /Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app
 rm -rf /Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json
 rm -rf /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
+rm -rf /Library/Application\ Support/Mozilla/NativeMessagingHosts/ee.ria.esteid.json
+rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{443830f0-1fff-4f9a-aa1e-444bafbc7319\}.xpi
 
 
 echo 'Remove old package references'

@@ -10,10 +10,12 @@ function remove_all {
     sudo rm -rf /Library/PreferencePanes/id-updater.prefPane
 
     echo 'Removing browser plug-ins'
-    sudo rm -rf /Library/Internet\ Plug-Ins/esteidfirefoxplugin.bundle
-    sudo rm -rf /Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app
-    sudo rm -rf /Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json
-    sudo rm -rf /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
+    sudo rm -rf /Library/Internet\ Plug-Ins/esteidfirefoxplugin.bundle \
+        /Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app \
+        /Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json \
+        /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json \
+        /Library/Application\ Support/Mozilla/NativeMessagingHosts/ee.ria.esteid.json \
+        /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{443830f0-1fff-4f9a-aa1e-444bafbc7319\}.xpi
 
     echo 'Removing Mozilla extension'
     sudo rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{aa84ce40-4253-a00a-8cd6-0800200f9a6*
