@@ -1,3 +1,10 @@
+Packaging version [17.01](https://github.com/open-eid/osx-installer/releases/tag/v17.01) release notes
+--------------------------------------------
+- Uninstall chrome-token-signing Firefox components
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v3.12.0...v17.01)
+
+
 Packaging version 3.12 release notes
 --------------------------------------
 Changes compared to ver 3.11.1
