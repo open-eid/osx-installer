@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/DistributionDefinitionRef/
+https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/InstallerJavaScriptRef/
+-->
+<installer-gui-script minSpecVersion="2">
+    <title>SU_TITLE</title>
+    <allowed-os-versions>
+        <os-version min="10.10"/>
+    </allowed-os-versions>
+    <options customize="never" require-scripts="false" rootVolumeOnly="true" hostArchitectures="x86_64"/>
+    <background file="background.png"/>
+    <localization>
+        <strings language="en">
+<![CDATA[
+"SU_TITLE" = "eID Software";
+"SU_ERROR" = "Error";
+"SU_1011" = "macOS must be 10.11 or newer.";
+]]>
+        </strings>
+        <strings language="et">
+<![CDATA[
+"SU_TITLE" = "eID tarkvara";
+"SU_ERROR" = "Viga";
+"SU_1011" = "macOS peab olema 10.11 või uuem.";
+]]>
+        </strings>
+        <strings language="ru">
+<![CDATA[
+"SU_TITLE" = "eID Software";
+"SU_ERROR" = "Error";
+"SU_1011" = "macOS must be 10.11 or newer.";
+]]>
+        </strings>
+    </localization>
+    <installation-check script="pm_install_check();"/>
+    <script>
+<![CDATA[
+function pm_install_check() {
+  if(system.compareVersions(system.version.ProductVersion, '10.11.0') < 0) {
+    my.result.title = system.localizedString('SU_ERROR');
+    my.result.message = system.localizedString('SU_1011');
+    my.result.type = 'Fatal';
+    return false;
+  }
+  return true;
+}
+
+function pm_safari_old_enabled() {
+  return system.compareVersions(system.version.ProductVersion, '10.14') < 0;
+}
+
+function pm_safari_new_enabled() {
+  return system.compareVersions(system.version.ProductVersion, '10.12') >= 0;
+}
+
+]]>
+    </script>
+    <choices-outline>
+        <line choice="default"/>
+    </choices-outline>
+    <choice id="default">
+        <pkg-ref id="ee.ria.safari-token-signing" active="pm_safari_new_enabled()">safari-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.firefox-token-signing" active="pm_safari_old_enabled()">firefox-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
+    </choice>
+</installer-gui-script>
