@@ -15,7 +15,7 @@ if [ -z "$2" ]
 then
     ARGS=(--version $1)
 else
-    ARGS=(--version $1 --sign "$2")
+    ARGS=(--version $1 --sign "Developer ID Installer: $2")
 fi
 
 mkdir -p root packages
@@ -36,3 +36,8 @@ hdiutil create Open-EID_$1.dmg -ov -volname Open-EID \
 
 rmdir root
 rm -rf .DS_Store background.png Open-EID.pkg License.txt scripts
+
+if [ ! -z "$2" ]
+then
+    codesign -s "Developer ID Application: $2" -f Open-EID_$1.dmg
+fi
