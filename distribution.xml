@@ -203,7 +203,7 @@ function pm_driversold_enabled() {
         <pkg-ref id="ee.ria.esteidfirefoxplugin">firefox-token-signing.pkg</pkg-ref>
     </choice>
     <choice id="firefox" title="SU_FIREFOX" description="SU_FIREFOX" start_selected="pm_firefox_selected()">
-        <pkg-ref id="ee.ria.esteidfirefoxplugin">firefox-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteidfirefoxplugin">chrome-token-signing.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteidpkcs11loader">firefox-pkcs11-loader.pkg</pkg-ref>
     </choice>
     <choice id="chrome" title="SU_CHROME" description="SU_CHROME" start_selected="pm_chrome_selected()">
