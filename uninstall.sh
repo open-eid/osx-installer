@@ -20,20 +20,21 @@ function remove_all {
     echo 'Removing Mozilla extension'
     sudo rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{aa84ce40-4253-a00a-8cd6-0800200f9a6*
 
-    echo 'Removing Tokend plugin'
-    sudo rm -rf /Library/Security/tokend/EstEID.tokend
-    sudo rm -rf /System/Library/Security/tokend/EstEID.tokend
+    echo 'Removing Drivers'
+    sudo rm -rf /Library/OpenSC
 
     echo 'Removing libraries'
     sudo rm -rf /Library/EstonianIDCard
 
-    sudo rm -rf /var/db/receipts/ee.ria.open-eid.* \
+    sudo rm -rf \
+        /var/db/receipts/ee.ria.open-eid.* \
         /var/db/receipts/ee.ria.ID-updater.* \
         /var/db/receipts/ee.ria.chrome-token-signing.* \
         /var/db/receipts/ee.ria.esteid-pkcs11* \
         /var/db/receipts/ee.ria.esteid-tokend* \
         /var/db/receipts/ee.ria.firefox-pkcs11-loader.* \
-        /var/db/receipts/ee.ria.firefox-token-signing.*
+        /var/db/receipts/ee.ria.firefox-token-signing.* \
+        /var/db/receipts/org.opensc-project.mac.*
     sudo rm -rf /Library/Preferences/ee.ria.*
 
     echo 'Uninstall done!'
