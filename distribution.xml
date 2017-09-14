@@ -6,7 +6,7 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 <installer-gui-script minSpecVersion="2">
     <title>SU_TITLE</title>
     <allowed-os-versions>
-        <os-version min="10.7"/>
+        <os-version min="10.10"/>
     </allowed-os-versions>
     <options customize="allow" require-scripts="false" rootVolumeOnly="true" hostArchitectures="x86_64"/>
     <!--domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/-->
@@ -107,8 +107,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 "SU_SAFARI" = "Safari browser signing support";
 "SU_FIREFOX" = "Firefox browser signing and authentication support";
 "SU_CHROME" = "Chrome browser signing support";
-"SU_DRIVERSNEW" = "Estonian ID-card support, OS X 10.10 or newer";
-"SU_DRIVERSOLD" = "Estonian ID-card support, OS X 10.9";
+"SU_DRIVERS" = "Estonian ID-card support";
 ]]>
         </strings>
         <strings language="et">
@@ -120,8 +119,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 "SU_SAFARI" = "Safari allkirjastamise tugi";
 "SU_FIREFOX" = "Firefoxi allkirjastamise ja autentimise tugi";
 "SU_CHROME" = "Chrome'i allkirjastamise tugi";
-"SU_DRIVERSNEW" = "Eesti ID-kaardi tugi, al. OS X 10.10";
-"SU_DRIVERSOLD" = "Eesti ID-kaardi tugi, OS X 10.9";
+"SU_DRIVERSN" = "Eesti ID-kaardi tugi";
 ]]>
         </strings>
         <strings language="ru">
@@ -133,8 +131,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 "SU_SAFARI" = "Поддержка подпис. в Safari";
 "SU_FIREFOX" = "Поддержка подпис. и аутентиф. в Firefox";
 "SU_CHROME" = "Поддержка подпис. в Chrome";
-"SU_DRIVERSNEW" = "Поддержка эстонской ID-карты, OS X 10.10 и выше";
-"SU_DRIVERSOLD" = "Поддержка эстонской ID-карты, OS X 10.9";
+"SU_DRIVERS" = "Поддержка эстонской ID-карты";
 ]]>
         </strings>
     </localization>
@@ -142,8 +139,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
     <script>
 <![CDATA[
 function pm_install_check() {
-  if(system.compareVersions(system.version.ProductVersion, '10.10.0') >= 0 &&
-     system.compareVersions(system.version.ProductVersion, '10.10.3') < 0) {
+  if(system.compareVersions(system.version.ProductVersion, '10.10.3') < 0) {
     my.result.title = system.localizedString('SU_ERROR');
     my.result.message = system.localizedString('SU_10103');
     my.result.type = 'Fatal';
@@ -167,24 +163,12 @@ function pm_chrome_selected() {
     my.target.receiptForIdentifier("ee.ria.chrome-token-signing") != null;
 }
 
-function pm_drivers1010_selected() {
-  return (my.target.receiptForIdentifier("ee.ria.open-eid") == null &&
-    system.compareVersions(system.version.ProductVersion, '10.10') >= 0) ||
-    my.target.receiptForIdentifier("ee.ria.esteid-tokend") != null;
+function pm_drivers_selected() {
+  return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
+    (my.target.receiptForIdentifier("ee.ria.esteid-tokend") != null ||
+     my.target.receiptForIdentifier("org.opensc-project.mac") != null);
 }
 
-function pm_driversold_selected() {
-  return (my.target.receiptForIdentifier("ee.ria.open-eid") == null &&
-    system.compareVersions(system.version.ProductVersion, '10.10') < 0) ||
-    my.target.receiptForIdentifier("ee.ria.esteid-tokend-old") != null;
-}
-function pm_drivers1010_enabled() {
-  return system.compareVersions(system.version.ProductVersion, '10.10') >= 0;
-}
-
-function pm_driversold_enabled() {
-  return system.compareVersions(system.version.ProductVersion, '10.10') < 0;
-}
 ]]>
     </script>
     <choices-outline>
@@ -192,8 +176,7 @@ function pm_driversold_enabled() {
         <line choice="safari"/>
         <line choice="firefox"/>
         <line choice="chrome"/>
-        <line choice="drivers1010"/>
-        <line choice="driversold"/>
+        <line choice="drivers"/>
     </choices-outline>
     <choice id="default" title="SU_BASE" start_enabled="false" visible="false">
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
@@ -209,12 +192,7 @@ function pm_driversold_enabled() {
     <choice id="chrome" title="SU_CHROME" description="SU_CHROME" start_selected="pm_chrome_selected()">
         <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
     </choice>
-    <choice id="drivers1010" title="SU_DRIVERSNEW" description="SU_DRIVERSNEW" start_selected="pm_drivers1010_selected()" start_enabled="pm_drivers1010_enabled()">
-        <pkg-ref id="ee.ria.esteid-pkcs11">esteid-pkcs11.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
-    </choice>
-    <choice id="driversold" title="SU_DRIVERSOLD" description="SU_DRIVERSOLD" start_selected="pm_driversold_selected()" start_enabled="pm_driversold_enabled()">
-        <pkg-ref id="ee.ria.esteid-pkcs11-old">esteid-pkcs11-old.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.esteid-tokend-old">esteid-tokend-old.pkg</pkg-ref>
+    <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
+        <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
     </choice>
 </installer-gui-script>
