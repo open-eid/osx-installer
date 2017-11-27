@@ -1,3 +1,23 @@
+Packaging version [17.12](https://github.com/open-eid/osx-installer/releases/tag/v17.12) release notes
+--------------------------------------------
+- Include new Fireofx PKCS11 loader for Firefox 58
+- macOS 10.10 support is now deprecated
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v17.10...v17.12)
+
+Packaging version [17.10](https://github.com/open-eid/osx-installer/releases/tag/v17.10) release notes
+--------------------------------------------
+- Remove NPAPI plugin
+- Bundle OpenSC driver
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v17.06...v17.10)
+
+Packaging version [17.06](https://github.com/open-eid/osx-installer/releases/tag/v17.06) release notes
+--------------------------------------------
+- Sign DMG images
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v17.01...v17.06)
+
 Packaging version [17.01](https://github.com/open-eid/osx-installer/releases/tag/v17.01) release notes
 --------------------------------------------
 - Uninstall chrome-token-signing Firefox components

@@ -35,7 +35,8 @@ rm -rf /Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json
 rm -rf /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
 rm -rf /Library/Application\ Support/Mozilla/NativeMessagingHosts/ee.ria.esteid.json
 rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{443830f0-1fff-4f9a-aa1e-444bafbc7319\}.xpi
-
+rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{02274e0c-d135-45f0-8a9c-32b35110e10d\}.xpi
+rm -rf /Library/Application\ Support/Mozilla/PKCS11Modules/onepinopenscpkcs11.json
 
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.sk.id* \
@@ -48,7 +49,8 @@ rm -rf /var/db/receipts/ee.sk.id* \
 	/var/db/receipts/ee.ria.esteidfirefoxplugin.* \
 	/var/db/receipts/ee.ria.esteidpkcs11loader.* \
 	/var/db/receipts/ee.ria.firefox-pkcs11-loader.* \
-	/var/db/receipts/ee.ria.firefox-token-signing.*
+	/var/db/receipts/ee.ria.firefox-token-signing.* \
+	/var/db/receipts/org.opensc-project.mac.*
 
 
 if [ -e "/Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist" ]; then
