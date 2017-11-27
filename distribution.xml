@@ -102,7 +102,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 <![CDATA[
 "SU_TITLE" = "eID Software";
 "SU_ERROR" = "Error";
-"SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
+"SU_1011" = "macOS must be 10.11 or newer.";
 "SU_BASE" = "Base components";
 "SU_SAFARI" = "Safari browser signing support";
 "SU_FIREFOX" = "Firefox browser signing and authentication support";
@@ -114,7 +114,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 <![CDATA[
 "SU_TITLE" = "eID tarkvara";
 "SU_ERROR" = "Viga";
-"SU_10103" = "OS X peab olema 10.10.3 või uuem.";
+"SU_1011" = "macOS peab olema 10.11 või uuem.";
 "SU_BASE" = "Baas komponendid";
 "SU_SAFARI" = "Safari allkirjastamise tugi";
 "SU_FIREFOX" = "Firefoxi allkirjastamise ja autentimise tugi";
@@ -126,7 +126,7 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
 <![CDATA[
 "SU_TITLE" = "eID Software";
 "SU_ERROR" = "Error";
-"SU_10103" = "OS X 10.10 must be serivce pack 3 or newer.";
+"SU_1011" = "macOS must be 10.11 or newer.";
 "SU_BASE" = "Base components";
 "SU_SAFARI" = "Поддержка подпис. в Safari";
 "SU_FIREFOX" = "Поддержка подпис. и аутентиф. в Firefox";
@@ -139,9 +139,9 @@ Lisaks tuleb Mac App Store'ist arvutisse paigaldada:\
     <script>
 <![CDATA[
 function pm_install_check() {
-  if(system.compareVersions(system.version.ProductVersion, '10.10.3') < 0) {
+  if(system.compareVersions(system.version.ProductVersion, '10.11.0') < 0) {
     my.result.title = system.localizedString('SU_ERROR');
-    my.result.message = system.localizedString('SU_10103');
+    my.result.message = system.localizedString('SU_1011');
     my.result.type = 'Fatal';
     return false;
   }
