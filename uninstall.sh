@@ -22,7 +22,8 @@ function remove_all {
         /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{02274e0c-d135-45f0-8a9c-32b35110e10d\}.xpi
 
     echo 'Removing Drivers'
-    sudo rm -rf /Library/OpenSC
+    sudo /usr/local/bin/opensc-uninstall
+    sudo rm -rf /Library/Security/tokend/EstEID.tokend
 
     echo 'Removing libraries'
     sudo rm -rf /Library/EstonianIDCard
