@@ -195,5 +195,6 @@ function pm_drivers_selected() {
     <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
         <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteid-ctk-tokend">esteid-ctk-tokend.pkg</pkg-ref>
     </choice>
 </installer-gui-script>

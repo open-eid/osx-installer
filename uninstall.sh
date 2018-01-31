@@ -24,6 +24,7 @@ function remove_all {
     echo 'Removing Drivers'
     sudo /usr/local/bin/opensc-uninstall
     sudo rm -rf /Library/Security/tokend/EstEID.tokend
+    sudo rm -rf /Applications/Utilities/EstEIDTokenApp.app
 
     echo 'Removing libraries'
     sudo rm -rf /Library/EstonianIDCard
@@ -34,6 +35,7 @@ function remove_all {
         /var/db/receipts/ee.ria.chrome-token-signing.* \
         /var/db/receipts/ee.ria.esteid-pkcs11* \
         /var/db/receipts/ee.ria.esteid-tokend* \
+        /var/db/receipts/ee.ria.esteid-ctk-tokend* \
         /var/db/receipts/ee.ria.firefox-pkcs11-loader.* \
         /var/db/receipts/ee.ria.firefox-token-signing.* \
         /var/db/receipts/org.opensc-project.mac.*
