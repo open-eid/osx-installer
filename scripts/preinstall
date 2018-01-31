@@ -20,6 +20,7 @@ echo 'Removing EstEID.tokend'
 /usr/local/bin/opensc-uninstall
 rm -rf /Library/Security/tokend/EstEID.tokend
 rm -rf /System/Library/Security/tokend/EstEID.tokend
+rm -rf /Applications/Utilities/EstEIDTokenApp.app
 
 echo 'Clearing tokens cache'
 rm -rf /var/db/TokenCache/tokens/*
