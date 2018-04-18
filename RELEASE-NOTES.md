@@ -1,3 +1,16 @@
+Packaging version [18.03](https://github.com/open-eid/osx-installer/releases/tag/v18.03) release notes
+--------------------------------------------
+- Cleanup uninstall script
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v18.02...v18.03)
+
+Packaging version [18.02](https://github.com/open-eid/osx-installer/releases/tag/v18.02) release notes
+--------------------------------------------
+- Revert to esteid-token
+- Add esteid-ctk-token for ECC cards 
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v17.12...v18.02)
+
 Packaging version [17.12](https://github.com/open-eid/osx-installer/releases/tag/v17.12) release notes
 --------------------------------------------
 - Include new Fireofx PKCS11 loader for Firefox 58
