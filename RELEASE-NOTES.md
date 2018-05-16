@@ -1,3 +1,8 @@
+Packaging version [18.06](https://github.com/open-eid/osx-installer/releases/tag/v18.06) release notes
+--------------------------------------------
+- DigiDoc4 Client added to install scripts
+- DigiDoc4 info and store link added to installer package
+
 Packaging version [18.03](https://github.com/open-eid/osx-installer/releases/tag/v18.03) release notes
 --------------------------------------------
 - Cleanup uninstall script
