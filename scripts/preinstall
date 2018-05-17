@@ -16,6 +16,13 @@ else
     rm -rf /Applications/qesteidutil.app;
 fi
 
+if $(codesign -d -vv /Applications/qdigidoc4.app 2>&1 |grep --quiet "3rd Party Mac Developer Application: Riigi Infosüsteemi Amet\|Apple Mac OS Application Signing"); 
+then
+    echo "qdigidoc4 is appstore version";
+else
+    rm -rf /Applications/qdigidoc4.app;
+fi
+
 echo 'Removing EstEID.tokend'
 /usr/local/bin/opensc-uninstall
 rm -rf /Library/Security/tokend/EstEID.tokend

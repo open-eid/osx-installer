@@ -10,6 +10,7 @@ version=$(defaults read $PWD/version.plist version)
 echo "Setting version info for qdigidoc/qesteidutil ${version}"
 defaults write /Library/Preferences/ee.ria.qesteidutil plugins "${version}"
 defaults write /Library/Preferences/ee.ria.qdigidocclient plugins "${version}"
+defaults write /Library/Preferences/ee.ria.qdigidoc4 plugins "${version}"
 
 #/usr/bin/open 'http://appstore.com/mac/ria'
 /usr/bin/open "macappstores://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=12&path=mac%2fria"
