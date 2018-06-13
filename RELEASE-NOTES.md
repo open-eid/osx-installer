@@ -1,7 +1,15 @@
+Packaging version [18.09](https://github.com/open-eid/osx-installer/releases/tag/v18.09) release notes
+--------------------------------------------
+- Add safari-token-signing
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v18.06...v18.09)
+
 Packaging version [18.06](https://github.com/open-eid/osx-installer/releases/tag/v18.06) release notes
 --------------------------------------------
 - DigiDoc4 Client added to install scripts
 - DigiDoc4 info and store link added to installer package
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v18.03...v18.06)
 
 Packaging version [18.03](https://github.com/open-eid/osx-installer/releases/tag/v18.03) release notes
 --------------------------------------------

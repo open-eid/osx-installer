@@ -36,29 +36,31 @@ echo 'Removing EstonianIDCard libraries'
 rm -rf /Library/EstonianIDCard
 
 echo 'Removing browser plug-ins'
-rm -rf /Library/Internet\ Plug-Ins/esteidsafariplugin.webplugin
-rm -rf /Library/Internet\ Plug-Ins/esteidfirefoxplugin.*
-rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{aa84ce40-4253-a00a-8cd6-0800200f9a6*
-rm -rf /Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app
-rm -rf /Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json
-rm -rf /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
-rm -rf /Library/Application\ Support/Mozilla/NativeMessagingHosts/ee.ria.esteid.json
-rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{443830f0-1fff-4f9a-aa1e-444bafbc7319\}.xpi
-rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{02274e0c-d135-45f0-8a9c-32b35110e10d\}.xpi
-rm -rf /Library/Application\ Support/Mozilla/PKCS11Modules/onepinopenscpkcs11.json
+rm -rf /Library/Internet\ Plug-Ins/esteidsafariplugin.webplugin \
+	/Library/Internet\ Plug-Ins/esteidfirefoxplugin.* \
+	/Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{aa84ce40-4253-a00a-8cd6-0800200f9a6* \
+	/Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app \
+	/Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json \
+	/Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json \
+	/Library/Application\ Support/Mozilla/NativeMessagingHosts/ee.ria.esteid.json \
+	/Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{443830f0-1fff-4f9a-aa1e-444bafbc7319\}.xpi \
+	/Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{02274e0c-d135-45f0-8a9c-32b35110e10d\}.xpi \
+	/Library/Application\ Support/Mozilla/PKCS11Modules/onepinopenscpkcs11.json \
+	/Applications/Utilities/TokenSigningApp.app
 
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.sk.id* \
 	/var/db/receipts/ee.ria.estonianidcard.* \
 	/var/db/receipts/ee.ria.open-eid.* \
 	/var/db/receipts/ee.ria.ID-updater.* \
-	/var/db/receipts/ee.ria.chrome-token-signing.* \
 	/var/db/receipts/ee.ria.esteid-pkcs11* \
 	/var/db/receipts/ee.ria.esteid-tokend* \
 	/var/db/receipts/ee.ria.esteidfirefoxplugin.* \
 	/var/db/receipts/ee.ria.esteidpkcs11loader.* \
 	/var/db/receipts/ee.ria.firefox-pkcs11-loader.* \
 	/var/db/receipts/ee.ria.firefox-token-signing.* \
+	/var/db/receipts/ee.ria.chrome-token-signing.* \
+	/var/db/receipts/ee.ria.safari-token-signing.* \
 	/var/db/receipts/org.opensc-project.mac.*
 
 
