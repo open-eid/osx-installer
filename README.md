@@ -16,6 +16,8 @@ A .DMG with DigiDoc, ID-card utility and package with various drivers.
    * firefox-token-signing
    * firefox-pkcs11-loader
    * opensc
+   * esteid-tokend
+   * esteid-ctk-tokend
    * updater
 
 3. Run make.sh script, optional parameter CN from keychain installer signing  certificate

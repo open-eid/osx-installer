@@ -176,7 +176,24 @@ function pm_chrome_selected() {
 function pm_drivers_selected() {
   return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     (my.target.receiptForIdentifier("ee.ria.esteid-tokend") != null ||
+     my.target.receiptForIdentifier("ee.ria.esteid-ctk-tokend") != null ||
      my.target.receiptForIdentifier("org.opensc-project.mac") != null);
+}
+
+function pm_drivers_old_enabled() {
+  return system.compareVersions(system.version.ProductVersion, '10.12') < 0;
+}
+
+function pm_drivers_new_enabled() {
+  return system.compareVersions(system.version.ProductVersion, '10.12') >= 0;
+}
+
+function pm_drivers_old_selected() {
+  return pm_drivers_old_enabled() && pm_drivers_selected();
+}
+
+function pm_drivers_new_selected() {
+  return pm_drivers_new_enabled() && pm_drivers_selected();
 }
 
 ]]>
@@ -186,7 +203,8 @@ function pm_drivers_selected() {
         <line choice="safari"/>
         <line choice="firefox"/>
         <line choice="chrome"/>
-        <line choice="drivers"/>
+        <line choice="drivers_old"/>
+        <line choice="drivers_new"/>
     </choices-outline>
     <choice id="default" title="SU_BASE" start_enabled="false" visible="false">
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
@@ -203,9 +221,12 @@ function pm_drivers_selected() {
     <choice id="chrome" title="SU_CHROME" description="SU_CHROME" start_selected="pm_chrome_selected()">
         <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
     </choice>
-    <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
+    <choice id="drivers_old" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_old_selected()" start_enabled="pm_drivers_old_enabled()">
         <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
+    </choice>
+    <choice id="drivers_new" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_new_selected()" start_enabled="pm_drivers_new_enabled()">
+        <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-ctk-tokend">esteid-ctk-tokend.pkg</pkg-ref>
     </choice>
 </installer-gui-script>

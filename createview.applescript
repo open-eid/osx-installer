@@ -1,15 +1,19 @@
 tell application "Finder"
 	tell disk "Open-EID"
 		open
-		set current view of container window to icon view
-		set toolbar visible of container window to false
-		set statusbar visible of container window to false
-		set the bounds of container window to {400, 100, 850, 530}
+		tell container window
+			set current view to icon view
+			set toolbar visible to false
+			set statusbar visible to false
+			set the bounds to {400, 100, 850, 530}
+		end tell
 		set theViewOptions to the icon view options of container window
-		set arrangement of theViewOptions to snap to grid
-		set icon size of theViewOptions to 100
-		set text size of theViewOptions to 16
-		set background picture of theViewOptions to file "background.png"
+		tell theViewOptions
+			set arrangement to snap to grid
+			set icon size to 100
+			set text size to 16
+		set background picture to file "background.png"
+		end tell
 		update without registering applications
 		delay 5
 		close
