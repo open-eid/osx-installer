@@ -163,6 +163,14 @@ function pm_safari_selected() {
      my.target.receiptForIdentifier("ee.ria.firefox-token-signing") != null);
 }
 
+function pm_safari_old_enabled() {
+  return system.compareVersions(system.version.ProductVersion, '10.14') < 0;
+}
+
+function pm_safari_new_enabled() {
+  return system.compareVersions(system.version.ProductVersion, '10.12') >= 0;
+}
+
 function pm_firefox_selected() {
   return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     my.target.receiptForIdentifier("ee.ria.firefox-pkcs11-loader") != null;
@@ -188,14 +196,6 @@ function pm_drivers_new_enabled() {
   return system.compareVersions(system.version.ProductVersion, '10.12') >= 0;
 }
 
-function pm_drivers_old_selected() {
-  return pm_drivers_old_enabled() && pm_drivers_selected();
-}
-
-function pm_drivers_new_selected() {
-  return pm_drivers_new_enabled() && pm_drivers_selected();
-}
-
 ]]>
     </script>
     <choices-outline>
@@ -203,30 +203,26 @@ function pm_drivers_new_selected() {
         <line choice="safari"/>
         <line choice="firefox"/>
         <line choice="chrome"/>
-        <line choice="drivers_old"/>
-        <line choice="drivers_new"/>
+        <line choice="drivers"/>
     </choices-outline>
     <choice id="default" title="SU_BASE" start_enabled="false" visible="false">
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
         <pkg-ref id="ee.ria.open-eid">Open-EID.pkg</pkg-ref>
     </choice>
     <choice id="safari" title="SU_SAFARI" description="SU_SAFARI" start_selected="pm_safari_selected()">
-        <pkg-ref id="ee.ria.safari-token-signing">safari-token-signing.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.firefox-token-signing">firefox-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.safari-token-signing" active="pm_safari_new_enabled()">safari-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.firefox-token-signing" active="pm_safari_old_enabled()">firefox-token-signing.pkg</pkg-ref>
     </choice>
     <choice id="firefox" title="SU_FIREFOX" description="SU_FIREFOX" start_selected="pm_firefox_selected()">
-        <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.chrome-token-signing"/>
         <pkg-ref id="ee.ria.firefox-pkcs11-loader">firefox-pkcs11-loader.pkg</pkg-ref>
     </choice>
     <choice id="chrome" title="SU_CHROME" description="SU_CHROME" start_selected="pm_chrome_selected()">
         <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
     </choice>
-    <choice id="drivers_old" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_old_selected()" start_enabled="pm_drivers_old_enabled()">
+    <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
         <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.esteid-tokend">esteid-tokend.pkg</pkg-ref>
-    </choice>
-    <choice id="drivers_new" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_new_selected()" start_enabled="pm_drivers_new_enabled()">
-        <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.esteid-ctk-tokend">esteid-ctk-tokend.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteid-ctk-tokend" active="pm_drivers_new_enabled()">esteid-ctk-tokend.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.esteid-tokend" active="pm_drivers_old_enabled()">esteid-tokend.pkg</pkg-ref>
     </choice>
 </installer-gui-script>
