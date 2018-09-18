@@ -1,6 +1,7 @@
 Packaging version [18.09](https://github.com/open-eid/osx-installer/releases/tag/v18.09) release notes
 --------------------------------------------
 - Add safari-token-signing
+- Use esteid-ctk-tokend for all cards on macOS >= 10.12
 
 [Full Changelog](https://github.com/open-eid/osx-installer/compare/v18.06...v18.09)
 
