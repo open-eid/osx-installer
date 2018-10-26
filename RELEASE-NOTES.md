@@ -1,3 +1,9 @@
+Packaging version [18.12](https://github.com/open-eid/osx-installer/releases/tag/v18.12) release notes
+--------------------------------------------
+- Include IDEMIA drivers
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v18.09...v18.12)
+
 Packaging version [18.09](https://github.com/open-eid/osx-installer/releases/tag/v18.09) release notes
 --------------------------------------------
 - Add safari-token-signing on macOS >= 10.12
