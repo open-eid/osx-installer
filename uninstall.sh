@@ -24,6 +24,7 @@ function remove_all {
 
     echo 'Removing Drivers'
     sudo /usr/local/bin/opensc-uninstall
+    echo y | sudo /Library/AWP/awp_uninstall.sh
     sudo rm -rf /Library/Security/tokend/EstEID.tokend
     sudo rm -rf /Applications/Utilities/EstEIDTokenApp.app
 
