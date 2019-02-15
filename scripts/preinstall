@@ -1,27 +1,15 @@
 #!/bin/bash
 
 echo 'Removing Applications'
-rm -rf /Applications/qdigidoccrypto.app
-if $(codesign -d -vv /Applications/qdigidocclient.app 2>&1 |grep --quiet "3rd Party Mac Developer Application: Riigi Infosüsteemi Amet\|Apple Mac OS Application Signing");
-then
-    echo "qdigidocclient is appstore version";
-else
-    rm -rf /Applications/qdigidocclient.app
-fi
-
-if $(codesign -d -vv /Applications/qesteidutil.app 2>&1 |grep --quiet "3rd Party Mac Developer Application: Riigi Infosüsteemi Amet\|Apple Mac OS Application Signing"); 
-then 
-    echo "qesteidutil is appstore version"; 
-else
-    rm -rf /Applications/qesteidutil.app;
-fi
-
 if $(codesign -d -vv /Applications/qdigidoc4.app 2>&1 |grep --quiet "3rd Party Mac Developer Application: Riigi Infosüsteemi Amet\|Apple Mac OS Application Signing"); 
 then
     echo "qdigidoc4 is appstore version";
 else
     rm -rf /Applications/qdigidoc4.app;
 fi
+
+echo 'Removing IDEMIA packages'
+echo y | /Library/AWP/awp_uninstall.sh
 
 echo 'Removing EstEID.tokend'
 /usr/local/bin/opensc-uninstall
