@@ -122,6 +122,10 @@ function pm_drivers_new_enabled() {
   return system.compareVersions(system.version.ProductVersion, '10.12') >= 0;
 }
 
+function isRestartRequired() {
+  return my.target.receiptForIdentifier("com.idemia.awp.neutralgui") != null ? "RequireRestart" : "None";
+}
+
 ]]>
     </script>
     <choices-outline>
@@ -133,7 +137,7 @@ function pm_drivers_new_enabled() {
     </choices-outline>
     <choice id="default" title="SU_BASE" start_enabled="false" visible="false">
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.open-eid">Open-EID.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.open-eid" onConclusionScript="isRestartRequired()">Open-EID.pkg</pkg-ref>
     </choice>
     <choice id="safari" title="SU_SAFARI" description="SU_SAFARI" start_selected="pm_safari_selected()">
         <pkg-ref id="ee.ria.safari-token-signing" active="pm_safari_new_enabled()">safari-token-signing.pkg</pkg-ref>
