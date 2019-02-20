@@ -10,6 +10,7 @@ fi
 
 echo 'Removing IDEMIA packages'
 echo y | /Library/AWP/awp_uninstall.sh
+killall -9 OTCryptokiGuiSvr
 
 echo 'Removing EstEID.tokend'
 /usr/local/bin/opensc-uninstall
