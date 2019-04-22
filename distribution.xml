@@ -141,7 +141,6 @@ function pm_drivers_new_enabled() {
     <choice id="firefox" title="SU_FIREFOX" description="SU_FIREFOX" start_selected="pm_firefox_selected()">
         <pkg-ref id="ee.ria.chrome-token-signing"/>
         <pkg-ref id="ee.ria.firefox-pkcs11-loader">firefox-pkcs11-loader.pkg</pkg-ref>
-        <pkg-ref id="com.idemia.awp.xpi">xpi.pkg</pkg-ref>
     </choice>
     <choice id="chrome" title="SU_CHROME" description="SU_CHROME" start_selected="pm_chrome_selected()">
         <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
