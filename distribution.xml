@@ -147,10 +147,9 @@ function pm_drivers_new_enabled() {
     </choice>
     <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
         <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
-        <pkg-ref id="com.idemia.awp.runtime">runtime.pkg</pkg-ref>
-        <pkg-ref id="com.idemia.awp.pkcs11">pkcs11.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-ctk-tokend" active="pm_drivers_new_enabled()">esteid-ctk-tokend.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-tokend" active="pm_drivers_old_enabled()">esteid-tokend.pkg</pkg-ref>
+        <pkg-ref id="com.idemia.awp.runtime" active="pm_drivers_old_enabled()">runtime.pkg</pkg-ref>
         <pkg-ref id="com.idemia.awp.tokend" active="pm_drivers_old_enabled()">tokend.pkg</pkg-ref>
     </choice>
 </installer-gui-script>

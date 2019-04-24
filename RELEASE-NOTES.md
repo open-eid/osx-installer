@@ -1,3 +1,15 @@
+Packaging version [19.06](https://github.com/open-eid/osx-installer/releases/tag/v19.06) release notes
+--------------------------------------------
+- Remove IDEMIA PKCS11 driver
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v19.02...v19.06)
+
+Packaging version [19.02](https://github.com/open-eid/osx-installer/releases/tag/v19.02) release notes
+--------------------------------------------
+- Use new CTK Tokend for IDEMIA cards (#22)
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v18.12...v19.02)
+
 Packaging version [18.12](https://github.com/open-eid/osx-installer/releases/tag/v18.12) release notes
 --------------------------------------------
 - Include IDEMIA drivers
