@@ -13,6 +13,6 @@ defaults write /Library/Preferences/ee.ria.qdigidocclient plugins "${version}"
 defaults write /Library/Preferences/ee.ria.qdigidoc4 plugins "${version}"
 
 /usr/bin/open "macappstore://itunes.apple.com/ee/developer/ria/id556524921?mt=12"
-/usr/bin/open /Applications/Utilities/TokenSigningApp.app
+/usr/bin/open /Applications/Utilities/TokenSigningSafariHelper.app
 
 exit 0
