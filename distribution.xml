@@ -42,6 +42,7 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 "SU_SAFARI" = "Safari browser signing support";
 "SU_FIREFOX" = "Firefox browser signing and authentication support";
 "SU_CHROME" = "Chrome browser signing support";
+"SU_CHROME_POLICY" = "Chrome signing plug-in will be activated automatically";
 "SU_DRIVERS" = "Estonian ID-card support";
 ]]>
         </strings>
@@ -54,6 +55,7 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 "SU_SAFARI" = "Safari allkirjastamise tugi";
 "SU_FIREFOX" = "Firefoxi allkirjastamise ja autentimise tugi";
 "SU_CHROME" = "Chrome'i allkirjastamise tugi";
+"SU_CHROME_POLICY" = "Chrome allkirjastamise tugi aktiveeritakse automaatselt";
 "SU_DRIVERSN" = "Eesti ID-kaardi tugi";
 ]]>
         </strings>
@@ -66,6 +68,7 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 "SU_SAFARI" = "Поддержка подпис. в Safari";
 "SU_FIREFOX" = "Поддержка подпис. и аутентиф. в Firefox";
 "SU_CHROME" = "Поддержка подпис. в Chrome";
+"SU_CHROME_POLICY" = "Поддержка подписывания Chrome активируется автоматически";
 "SU_DRIVERS" = "Поддержка эстонской ID-карты";
 ]]>
         </strings>
@@ -107,6 +110,12 @@ function pm_chrome_selected() {
     my.target.receiptForIdentifier("ee.ria.chrome-token-signing") != null;
 }
 
+function pm_chrome_policy_selected() {
+  return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
+    my.target.receiptForIdentifier("ee.ria.chrome-token-signing-policy") != null || 
+    system.compareVersions(my.target.receiptForIdentifier("ee.ria.chrome-token-signing").version, "1.0.9") < 0;
+}
+
 function pm_drivers_selected() {
   return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     (my.target.receiptForIdentifier("ee.ria.esteid-tokend") != null ||
@@ -128,6 +137,7 @@ function pm_drivers_new_enabled() {
         <line choice="safari"/>
         <line choice="firefox"/>
         <line choice="chrome"/>
+        <line choice="chrome_policy"/>
         <line choice="drivers"/>
     </choices-outline>
     <choice id="default" title="SU_BASE" start_enabled="false" visible="false">
@@ -144,6 +154,9 @@ function pm_drivers_new_enabled() {
     </choice>
     <choice id="chrome" title="SU_CHROME" description="SU_CHROME" start_selected="pm_chrome_selected()">
         <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
+    </choice>
+    <choice id="chrome_policy" title="SU_CHROME_POLICY" description="SU_CHROME_POLICY" start_selected="pm_chrome_policy_selected()">
+        <pkg-ref id="ee.ria.chrome-token-signing-policy">chrome-token-signing-policy.pkg</pkg-ref>
     </choice>
     <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
         <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
