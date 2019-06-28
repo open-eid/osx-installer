@@ -1,4 +1,4 @@
-Packaging version [19.06](https://github.com/open-eid/osx-installer/releases/tag/v19.06) release notes
+Packaging version [19.07](https://github.com/open-eid/osx-installer/releases/tag/v19.07) release notes
 --------------------------------------------
 - Remove IDEMIA PKCS11 driver
 

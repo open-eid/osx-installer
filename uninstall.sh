@@ -33,6 +33,7 @@ function remove_all {
     sudo pkgutil --forget ee.ria.open-eid
     sudo pkgutil --forget ee.ria.ID-updater
     sudo pkgutil --forget ee.ria.chrome-token-signing
+    sudo pkgutil --forget ee.ria.chrome-token-signing-policy
     sudo pkgutil --forget ee.ria.safari-token-signing
     sudo pkgutil --forget ee.ria.firefox-token-signing
     sudo pkgutil --forget ee.ria.firefox-pkcs11-loader
