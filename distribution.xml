@@ -164,5 +164,6 @@ function pm_drivers_new_enabled() {
         <pkg-ref id="ee.ria.esteid-tokend" active="pm_drivers_old_enabled()">esteid-tokend.pkg</pkg-ref>
         <pkg-ref id="com.idemia.awp.runtime" active="pm_drivers_old_enabled()">runtime.pkg</pkg-ref>
         <pkg-ref id="com.idemia.awp.tokend" active="pm_drivers_old_enabled()">tokend.pkg</pkg-ref>
+        <pkg-ref id="com.idemia.awp.pkcs11" active="pm_drivers_old_enabled()">pkcs11.pkg</pkg-ref>
     </choice>
 </installer-gui-script>
