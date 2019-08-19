@@ -62,6 +62,6 @@ function pm_safari_new_enabled() {
     <choice id="default">
         <pkg-ref id="ee.ria.safari-token-signing" active="pm_safari_new_enabled()">safari-token-signing.pkg</pkg-ref>
         <pkg-ref id="ee.ria.firefox-token-signing" active="pm_safari_old_enabled()">firefox-token-signing.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.chrome-token-signing">chrome-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.token-signing-chrome">token-signing-chrome.pkg</pkg-ref>
     </choice>
 </installer-gui-script>
