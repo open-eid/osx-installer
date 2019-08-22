@@ -56,7 +56,7 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 "SU_FIREFOX" = "Firefoxi allkirjastamise ja autentimise tugi";
 "SU_CHROME" = "Chrome'i allkirjastamise tugi";
 "SU_CHROME_POLICY" = "Chrome allkirjastamise tugi aktiveeritakse automaatselt";
-"SU_DRIVERSN" = "Eesti ID-kaardi tugi";
+"SU_DRIVERS" = "Eesti ID-kaardi tugi";
 ]]>
         </strings>
         <strings language="ru">
