@@ -11,7 +11,9 @@ A .DMG with DigiDoc, ID-card utility and package with various drivers.
         cd osx-installer
 
 2. Download dependencies to packages folder
-   * chrome-token-signing
+   * token-signing-chrome-policy
+   * token-signing-chrome
+   * token-signing-firefox
    * safari-token-signing
    * firefox-token-signing
    * firefox-pkcs11-loader

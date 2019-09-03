@@ -34,6 +34,9 @@ function remove_all {
     sudo pkgutil --forget ee.ria.open-eid
     sudo pkgutil --forget ee.ria.ID-updater
     sudo pkgutil --forget ee.ria.chrome-token-signing
+    sudo pkgutil --forget ee.ria.token-signing-chrome
+    sudo pkgutil --forget ee.ria.token-signing-firefox
+    sudo pkgutil --forget ee.ria.token-signing-chrome-policy
     sudo pkgutil --forget ee.ria.chrome-token-signing-policy
     sudo pkgutil --forget ee.ria.safari-token-signing
     sudo pkgutil --forget ee.ria.firefox-token-signing
