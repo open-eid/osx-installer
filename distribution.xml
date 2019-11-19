@@ -120,8 +120,7 @@ function pm_chrome_policy_selected() {
 
 function pm_drivers_selected() {
   return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
-    (my.target.receiptForIdentifier("ee.ria.esteid-tokend") != null ||
-     my.target.receiptForIdentifier("ee.ria.esteid-ctk-tokend") != null ||
+    (my.target.receiptForIdentifier("ee.ria.esteid-ctk-tokend") != null ||
      my.target.receiptForIdentifier("org.opensc-project.mac") != null);
 }
 
@@ -163,7 +162,6 @@ function pm_drivers_new_enabled() {
     <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
         <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-ctk-tokend" active="pm_drivers_new_enabled()">esteid-ctk-tokend.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.esteid-tokend" active="pm_drivers_old_enabled()">esteid-tokend.pkg</pkg-ref>
         <pkg-ref id="com.idemia.awp.runtime" active="pm_drivers_old_enabled()">runtime.pkg</pkg-ref>
         <pkg-ref id="com.idemia.awp.tokend" active="pm_drivers_old_enabled()">tokend.pkg</pkg-ref>
         <pkg-ref id="com.idemia.awp.pkcs11" active="pm_drivers_old_enabled()">pkcs11.pkg</pkg-ref>
