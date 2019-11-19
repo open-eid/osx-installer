@@ -18,7 +18,6 @@ A .DMG with DigiDoc, ID-card utility and package with various drivers.
    * firefox-token-signing
    * firefox-pkcs11-loader
    * opensc
-   * esteid-tokend
    * esteid-ctk-tokend
    * updater
 
