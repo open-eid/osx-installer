@@ -22,6 +22,9 @@ function remove_all {
         /Applications/Utilities/TokenSigningSafariHelper.app
     sudo profiles remove --identifier ee.ria.chrome-token-signing
     osascript -e 'tell application "System Events" to delete login item "TokenSigningSafariHelper"'
+    PLIST=/Library/Preferences/org.mozilla.firefox.plist
+    sudo defaults write ${PLIST} ExtensionSettings -dict-add "'{02274e0c-d135-45f0-8a9c-32b35110e10d}'" "{ 'installation_mode' = 'blocked'; }"
+    sudo defaults write ${PLIST} ExtensionSettings -dict-add "'{443830f0-1fff-4f9a-aa1e-444bafbc7319}'" "{ 'installation_mode' = 'blocked'; }"
 
     echo 'Removing Drivers'
     sudo /usr/local/bin/opensc-uninstall
