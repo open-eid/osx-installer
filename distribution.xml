@@ -10,7 +10,7 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
     </allowed-os-versions>
     <options customize="allow" require-scripts="false" rootVolumeOnly="true" hostArchitectures="x86_64"/>
     <!--domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/-->
-    <background file="background.png"/>
+    <background file="background.png" alignment="center" mime-type="image/png" scaling="tofit" />
     <welcome language="en" mime-type="text/html"><![CDATA[<html><body><br />
 <p style="margin: 0px; font: 13px 'Lucida Grande'">You will be guided through the steps necessary to install this software.</p></body></html>]]></welcome>
     <welcome language="et" mime-type="text/html"><![CDATA[<html><body><br />
