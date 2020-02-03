@@ -28,10 +28,8 @@ function remove_all {
 
     echo 'Removing Drivers'
     sudo /usr/local/bin/opensc-uninstall
-    echo y | sudo /Library/AWP/awp_uninstall.sh
     sudo rm -rf /Library/Security/tokend/EstEID.tokend
     sudo rm -rf /Applications/Utilities/EstEIDTokenApp.app
-    sudo killall -9 OTCryptokiGuiSvr
 
     echo 'Cleaning up'
     sudo pkgutil --forget ee.ria.open-eid
