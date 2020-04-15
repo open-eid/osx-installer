@@ -92,14 +92,6 @@ function pm_safari_selected() {
      my.target.receiptForIdentifier("ee.ria.firefox-token-signing") != null);
 }
 
-function pm_safari_old_enabled() {
-  return system.compareVersions(system.version.ProductVersion, '10.14') < 0;
-}
-
-function pm_safari_new_enabled() {
-  return system.compareVersions(system.version.ProductVersion, '10.12') >= 0;
-}
-
 function pm_firefox_selected() {
   return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     my.target.receiptForIdentifier("ee.ria.firefox-pkcs11-loader") != null;
@@ -138,8 +130,7 @@ function pm_drivers_selected() {
         <pkg-ref id="ee.ria.open-eid">Open-EID.pkg</pkg-ref>
     </choice>
     <choice id="safari" title="SU_SAFARI" description="SU_SAFARI" start_selected="pm_safari_selected()">
-        <pkg-ref id="ee.ria.safari-token-signing" active="pm_safari_new_enabled()">safari-token-signing.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.firefox-token-signing" active="pm_safari_old_enabled()">firefox-token-signing.pkg</pkg-ref>
+        <pkg-ref id="ee.ria.safari-token-signing">safari-token-signing.pkg</pkg-ref>
     </choice>
     <choice id="firefox" title="SU_FIREFOX" description="SU_FIREFOX" start_selected="pm_firefox_selected()">
         <pkg-ref id="ee.ria.token-signing-firefox">token-signing-firefox.pkg</pkg-ref>

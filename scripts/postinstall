@@ -7,9 +7,7 @@ for user in $(dscl . list /Users |grep -v -e '^_.*' -e Guest -e root -e daemon -
 done
 
 version=$(defaults read $PWD/version.plist version)
-echo "Setting version info for qdigidoc/qesteidutil ${version}"
-defaults write /Library/Preferences/ee.ria.qesteidutil plugins "${version}"
-defaults write /Library/Preferences/ee.ria.qdigidocclient plugins "${version}"
+echo "Setting version info for qdigidoc4 ${version}"
 defaults write /Library/Preferences/ee.ria.qdigidoc4 plugins "${version}"
 
 /usr/bin/open "macappstore://itunes.apple.com/ee/developer/ria/id556524921?mt=12"
