@@ -104,10 +104,11 @@ function pm_chrome_selected() {
 }
 
 function pm_chrome_policy_selected() {
-  return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
+  return pm_chrome_selected() && (
+    my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     my.target.receiptForIdentifier("ee.ria.chrome-token-signing-policy") != null || 
     my.target.receiptForIdentifier("ee.ria.token-signing-chrome-policy") != null || 
-    system.compareVersions(my.target.receiptForIdentifier("ee.ria.chrome-token-signing").version, "1.0.9") < 0;
+    system.compareVersions(my.target.receiptForIdentifier("ee.ria.chrome-token-signing").version, "1.0.9") < 0);
 }
 
 function pm_drivers_selected() {
@@ -139,7 +140,11 @@ function pm_drivers_selected() {
     <choice id="chrome" title="SU_CHROME" description="SU_CHROME" start_selected="pm_chrome_selected()">
         <pkg-ref id="ee.ria.token-signing-chrome">token-signing-chrome.pkg</pkg-ref>
     </choice>
-    <choice id="chrome_policy" title="SU_CHROME_POLICY" description="SU_CHROME_POLICY" start_selected="pm_chrome_policy_selected()">
+    <choice id="chrome_policy" title="SU_CHROME_POLICY" description="SU_CHROME_POLICY"
+            start_selected="pm_chrome_policy_selected()"
+            start_enabled="pm_chrome_selected()"
+            enabled="choices.chrome.selected"
+            selected="choices.chrome.selected ? choices.chrome_policy.selected : false">
         <pkg-ref id="ee.ria.token-signing-chrome-policy">token-signing-chrome-policy.pkg</pkg-ref>
     </choice>
     <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
