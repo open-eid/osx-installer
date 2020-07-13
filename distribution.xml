@@ -103,8 +103,12 @@ function pm_chrome_selected() {
     my.target.receiptForIdentifier("ee.ria.token-signing-chrome") != null;
 }
 
+function pm_chrome_policy_visible() {
+  return system.compareVersions(system.version.ProductVersion, '10.16') < 0;
+}
+
 function pm_chrome_policy_selected() {
-  return pm_chrome_selected() && (
+  return pm_chrome_policy_visible() && pm_chrome_selected() && (
     my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
     my.target.receiptForIdentifier("ee.ria.chrome-token-signing-policy") != null || 
     my.target.receiptForIdentifier("ee.ria.token-signing-chrome-policy") != null || 
@@ -143,6 +147,7 @@ function pm_drivers_selected() {
     <choice id="chrome_policy" title="SU_CHROME_POLICY" description="SU_CHROME_POLICY"
             start_selected="pm_chrome_policy_selected()"
             start_enabled="pm_chrome_selected()"
+            start_visible="pm_chrome_policy_visible()"
             enabled="choices.chrome.selected"
             selected="choices.chrome.selected ? choices.chrome_policy.selected : false">
         <pkg-ref id="ee.ria.token-signing-chrome-policy">token-signing-chrome-policy.pkg</pkg-ref>
