@@ -36,6 +36,11 @@ rm -rf /Library/Internet\ Plug-Ins/esteidsafariplugin.webplugin \
 	/Applications/Utilities/TokenSigningApp.app \
 	/Applications/Utilities/TokenSigningSafariHelper.app
 
+base_ver="10.15.99"
+if [ $(echo -e $base_ver"\n"$(sw_vers -productVersion) | sort -V | tail -1) == "$base_ver" ]; then 
+	profiles remove --identifier ee.ria.chrome-token-signing
+fi
+
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.ria.open-eid.* \
 	/var/db/receipts/ee.ria.ID-updater.* \
