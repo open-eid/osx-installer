@@ -51,7 +51,7 @@ function pm_install_check() {
         <line choice="default"/>
     </choices-outline>
     <choice id="default">
-        <pkg-ref id="ee.ria.safari-token-signing">safari-token-signing.pkg</pkg-ref>
-        <pkg-ref id="ee.ria.token-signing-chrome">token-signing-chrome.pkg</pkg-ref>
+        <pkg-ref id="eu.web-eid.web-eid-chrome">web-eid-chrome.pkg</pkg-ref>
+        <pkg-ref id="eu.web-eid.web-eid-firefox">web-eid-firefox.pkg</pkg-ref>
     </choice>
 </installer-gui-script>
