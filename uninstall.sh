@@ -10,7 +10,7 @@ function remove_all {
     sudo rm -rf /Library/PreferencePanes/id-updater.prefPane
 
     echo 'Removing browser plug-ins and extensions'
-    sudo rm -rf \
+    sudo rm -rf /Library/Internet\ Plug-Ins/esteidfirefoxplugin.bundle \
         /Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app \
         /Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json \
         /Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json \
@@ -31,8 +31,10 @@ function remove_all {
 
     echo 'Removing Drivers'
     sudo /usr/local/bin/opensc-uninstall
+    echo y | sudo /Library/AWP/awp_uninstall.sh
     sudo rm -rf /Library/Security/tokend/EstEID.tokend
     sudo rm -rf /Applications/Utilities/EstEIDTokenApp.app
+    sudo killall -9 OTCryptokiGuiSvr
 
     echo 'Cleaning up'
     sudo pkgutil --forget ee.ria.open-eid
@@ -43,6 +45,7 @@ function remove_all {
     sudo pkgutil --forget ee.ria.token-signing-chrome-policy
     sudo pkgutil --forget ee.ria.chrome-token-signing-policy
     sudo pkgutil --forget ee.ria.safari-token-signing
+    sudo pkgutil --forget ee.ria.firefox-token-signing
     sudo pkgutil --forget ee.ria.firefox-pkcs11-loader
     sudo pkgutil --forget ee.ria.esteid-tokend
     sudo pkgutil --forget ee.ria.esteid-ctk-tokend
