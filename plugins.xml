@@ -15,21 +15,21 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 <![CDATA[
 "SU_TITLE" = "eID Software";
 "SU_ERROR" = "Error";
-"SU_1013" = "macOS must be 10.13 or newer.";
+"SU_1014" = "macOS must be 10.14 or newer.";
 ]]>
         </strings>
         <strings language="et">
 <![CDATA[
 "SU_TITLE" = "eID tarkvara";
 "SU_ERROR" = "Viga";
-"SU_1013" = "macOS peab olema 10.13 või uuem.";
+"SU_1014" = "macOS peab olema 10.14 või uuem.";
 ]]>
         </strings>
         <strings language="ru">
 <![CDATA[
-"SU_TITLE" = "eID Software";
-"SU_ERROR" = "Error";
-"SU_1013" = "macOS must be 10.13 or newer.";
+"SU_TITLE" = "eID программное обеспечени";
+"SU_ERROR" = "Ошибка";
+"SU_1014" = "Версия macOS должна быть 10.14 или новее.";
 ]]>
         </strings>
     </localization>
@@ -37,9 +37,9 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
     <script>
 <![CDATA[
 function pm_install_check() {
-  if(system.compareVersions(system.version.ProductVersion, '10.13.0') < 0) {
+  if(system.compareVersions(system.version.ProductVersion, '10.14.0') < 0) {
     my.result.title = system.localizedString('SU_ERROR');
-    my.result.message = system.localizedString('SU_1013');
+    my.result.message = system.localizedString('SU_1014');
     my.result.type = 'Fatal';
     return false;
   }
