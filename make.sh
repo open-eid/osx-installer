@@ -19,7 +19,8 @@ else
     ARGS=(--version $1 --sign "Developer ID Installer: $2")
 fi
 
-mkdir -p root packages
+mkdir -p root/usr/local/bin packages
+cp ${SOURCE}/open-eid-uninstall.sh root/usr/local/bin
 
 pkgbuild "${ARGS[@]}" --root root --scripts scripts --id ee.ria.open-eid \
     packages/open-eid.pkg
@@ -29,13 +30,12 @@ productbuild "${ARGS[@]}" --distribution ${SOURCE}/plugins.xml \
     --package-path packages/ --resources . Open-EID-plugins_$1.pkg
 
 cp ${SOURCE}/DS_Store ${tmpdir}/.DS_Store
-cp Open-EID.pkg background.png ${SOURCE}/uninstall.sh ${tmpdir}
+cp Open-EID.pkg background.png ${tmpdir}
 setfile -a E ${tmpdir}/Open-EID.pkg
 setfile -a V ${tmpdir}/background.png
 hdiutil create Open-EID_$1.dmg -ov -volname Open-EID -srcfolder ${tmpdir}
 
-rmdir root
-rm -rf .DS_Store background.png Open-EID.pkg License.txt scripts ${tmpdir}
+rm -rf root .DS_Store background.png Open-EID.pkg License.txt scripts ${tmpdir}
 
 if [ ! -z "$2" ]
 then
