@@ -3,7 +3,7 @@ osx-installer
 
 ![European Regional Development Fund](https://github.com/open-eid/DigiDoc4-Client/blob/master/client/images/EL_Regionaalarengu_Fond.png "European Regional Development Fund - DO NOT REMOVE THIS IMAGE BEFORE 05.03.2020")
 
-A .DMG with DigiDoc, ID-card utility and package with various drivers.
+A .DMG package with various drivers.
 
 1. Fetch the source
 
@@ -15,7 +15,6 @@ A .DMG with DigiDoc, ID-card utility and package with various drivers.
    * token-signing-chrome
    * token-signing-firefox
    * safari-token-signing
-   * firefox-token-signing
    * firefox-pkcs11-loader
    * opensc
    * esteid-ctk-tokend
@@ -30,6 +29,6 @@ A .DMG with DigiDoc, ID-card utility and package with various drivers.
         open Open-EID_18.9.0.0.dmg 
 
 ## Support
-Official builds are provided through official distribution point [installer.id.ee](https://installer.id.ee). If you want support, you need to be using official builds. Contact our support via [www.id.ee](http://www.id.ee) for assistance.
+Official builds are provided through official distribution point [id.ee](https://www.id.ee/en/article/install-id-software/). If you want support, you need to be using official builds. Contact our support via [www.id.ee](http://www.id.ee) for assistance.
 
 Source code is provided on "as is" terms with no warranty (see license for more information). Do not file Github issues with generic support requests.
