@@ -10,29 +10,6 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
     </allowed-os-versions>
     <options customize="never" require-scripts="false" rootVolumeOnly="true" hostArchitectures="x86_64"/>
     <background file="background.png"/>
-    <localization>
-        <strings language="en">
-<![CDATA[
-"SU_TITLE" = "eID Software";
-"SU_ERROR" = "Error";
-"SU_1014" = "macOS must be 10.14 or newer.";
-]]>
-        </strings>
-        <strings language="et">
-<![CDATA[
-"SU_TITLE" = "eID tarkvara";
-"SU_ERROR" = "Viga";
-"SU_1014" = "macOS peab olema 10.14 või uuem.";
-]]>
-        </strings>
-        <strings language="ru">
-<![CDATA[
-"SU_TITLE" = "eID программное обеспечени";
-"SU_ERROR" = "Ошибка";
-"SU_1014" = "Версия macOS должна быть 10.14 или новее.";
-]]>
-        </strings>
-    </localization>
     <installation-check script="pm_install_check();"/>
     <script>
 <![CDATA[
