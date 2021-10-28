@@ -3,9 +3,9 @@
 echo 'Removing Applications'
 if $(codesign -d -vv /Applications/qdigidoc4.app 2>&1 |grep --quiet "3rd Party Mac Developer Application: Riigi Infosüsteemi Amet\|Apple Mac OS Application Signing"); 
 then
-    echo "qdigidoc4 is appstore version";
+	echo "qdigidoc4 is appstore version";
 else
-    rm -rf /Applications/qdigidoc4.app;
+	rm -rf /Applications/qdigidoc4.app;
 fi
 
 echo 'Removing IDEMIA packages'
@@ -35,22 +35,22 @@ rm -rf /Library/Internet\ Plug-Ins/esteidsafariplugin.webplugin \
 	/Library/Application\ Support/Mozilla/PKCS11Modules/idemiaawppkcs11.json \
 	/Applications/Utilities/TokenSigningApp.app \
 	/Applications/Utilities/TokenSigningSafariHelper.app
-
-base_ver="10.15.99"
-if [ $(echo -e $base_ver"\n"$(sw_vers -productVersion) | sort -V | tail -1) == "$base_ver" ]; then 
-	profiles remove --identifier ee.ria.chrome-token-signing
-fi
+profiles remove --identifier ee.ria.chrome-token-signing
 
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.ria.open-eid.* \
 	/var/db/receipts/ee.ria.ID-updater.* \
-	/var/db/receipts/ee.ria.esteid-pkcs11* \
 	/var/db/receipts/ee.ria.esteid-tokend* \
+	/var/db/receipts/ee.ria.esteid-ctk-tokend* \
 	/var/db/receipts/ee.ria.esteidfirefoxplugin.* \
 	/var/db/receipts/ee.ria.esteidpkcs11loader.* \
 	/var/db/receipts/ee.ria.firefox-pkcs11-loader.* \
 	/var/db/receipts/ee.ria.firefox-token-signing.* \
 	/var/db/receipts/ee.ria.chrome-token-signing.* \
+	/var/db/receipts/ee.ria.chrome-token-signing-policy.* \
+	/var/db/receipts/ee.ria.token-signing-chrome.* \
+	/var/db/receipts/ee.ria.token-signing-firefox.* \
+	/var/db/receipts/ee.ria.token-signing-chrome-policy.* \
 	/var/db/receipts/ee.ria.safari-token-signing.* \
 	/var/db/receipts/org.opensc-project.mac.*
 
