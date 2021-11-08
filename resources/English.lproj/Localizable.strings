@@ -1,6 +1,6 @@
 "SU_TITLE" = "eID Software";
 "SU_ERROR" = "Error";
-"SU_1014" = "macOS must be 10.14 or newer.";
+"SU_1014" = "macOS must be 10.15 or newer.";
 "SU_BASE" = "Base components";
 "SU_FIREFOX" = "Firefox authentication and signing support";
 "SU_CHROME" = "Chrome authentication and signing support";
