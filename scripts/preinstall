@@ -42,6 +42,7 @@ rm -rf /Library/Internet\ Plug-Ins/esteidsafariplugin.webplugin \
 
 PLIST=/Library/Preferences/org.mozilla.firefox.plist
 defaults write ${PLIST} ExtensionSettings -dict-add "'{443830f0-1fff-4f9a-aa1e-444bafbc7319}'" "{ 'installation_mode' = 'blocked'; }"
+defaults write ${PLIST} ExtensionSettings -dict-add "'{02274e0c-d135-45f0-8a9c-32b35110e10d}'" "{ 'installation_mode' = 'blocked'; }"
 
 profiles remove --identifier ee.ria.chrome-token-signing
 profiles remove --identifier ee.ria.web-eid
