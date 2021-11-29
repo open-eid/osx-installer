@@ -39,10 +39,9 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 "SU_ERROR" = "Error";
 "SU_1014" = "macOS must be 10.14 or newer.";
 "SU_BASE" = "Base components";
-"SU_SAFARI" = "Safari browser signing support";
-"SU_FIREFOX" = "Firefox browser signing and authentication support";
-"SU_CHROME" = "Chrome browser signing support";
-"SU_CHROME_POLICY" = "Chrome signing plug-in will be activated automatically";
+"SU_FIREFOX" = "Firefox authentication and signing support";
+"SU_CHROME" = "Chrome authentication and signing support";
+"SU_CHROME_POLICY" = "Chrome extension will be activated automatically";
 "SU_DRIVERS" = "Estonian ID-card support";
 ]]>
         </strings>
@@ -52,10 +51,9 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 "SU_ERROR" = "Viga";
 "SU_1014" = "macOS peab olema 10.14 või uuem.";
 "SU_BASE" = "Baas komponendid";
-"SU_SAFARI" = "Safari allkirjastamise tugi";
-"SU_FIREFOX" = "Firefoxi allkirjastamise ja autentimise tugi";
-"SU_CHROME" = "Chrome'i allkirjastamise tugi";
-"SU_CHROME_POLICY" = "Chrome allkirjastamise tugi aktiveeritakse automaatselt";
+"SU_FIREFOX" = "Firefox isikutuvastamise ja allkirjastamise tugi";
+"SU_CHROME" = "Chrome isikutuvastamise ja allkirjastamise tugi";
+"SU_CHROME_POLICY" = "Chrome laiendus aktiveeritakse automaatselt";
 "SU_DRIVERS" = "Eesti ID-kaardi tugi";
 ]]>
         </strings>
@@ -65,10 +63,9 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
 "SU_ERROR" = "Ошибка";
 "SU_1014" = "Версия macOS должна быть 10.14 или новее.";
 "SU_BASE" = "Базовые компоненты";
-"SU_SAFARI" = "Поддержка подпис. в Safari";
-"SU_FIREFOX" = "Поддержка подпис. и аутентиф. в Firefox";
-"SU_CHROME" = "Поддержка подпис. в Chrome";
-"SU_CHROME_POLICY" = "Плагин для работы с электронной подписью в Chrome активируется автоматически";
+"SU_FIREFOX" = "Поддержка аутентификации и электронной подписи в Firefox";
+"SU_CHROME" = "Поддержка аутентификации и электронной подписи в Chrome";
+"SU_CHROME_POLICY" = "Плагин для Chrome активируется автоматически";
 "SU_DRIVERS" = "Поддержка эстонской ID-карты";
 ]]>
         </strings>
@@ -86,21 +83,18 @@ function pm_install_check() {
   return true;
 }
 
-function pm_safari_selected() {
-  return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
-    (my.target.receiptForIdentifier("ee.ria.safari-token-signing") != null ||
-     my.target.receiptForIdentifier("ee.ria.firefox-token-signing") != null);
-}
-
 function pm_firefox_selected() {
   return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
-    my.target.receiptForIdentifier("ee.ria.firefox-pkcs11-loader") != null;
+    (my.target.receiptForIdentifier("ee.ria.firefox-pkcs11-loader") != null ||
+     my.target.receiptForIdentifier("ee.ria.token-signing-firefox") != null ||
+     my.target.receiptForIdentifier("eu.web-eid.web-eid-firefox") != null);
 }
 
 function pm_chrome_selected() {
   return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
-    my.target.receiptForIdentifier("ee.ria.chrome-token-signing") != null ||
-    my.target.receiptForIdentifier("ee.ria.token-signing-chrome") != null;
+    (my.target.receiptForIdentifier("ee.ria.chrome-token-signing") != null ||
+     my.target.receiptForIdentifier("ee.ria.token-signing-chrome") != null ||
+     my.target.receiptForIdentifier("eu.web-eid.web-eid-chrome") != null);
 }
 
 function pm_chrome_policy_visible() {
@@ -108,11 +102,8 @@ function pm_chrome_policy_visible() {
 }
 
 function pm_chrome_policy_selected() {
-  return pm_chrome_policy_visible() && pm_chrome_selected() && (
-    my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
-    my.target.receiptForIdentifier("ee.ria.chrome-token-signing-policy") != null || 
-    my.target.receiptForIdentifier("ee.ria.token-signing-chrome-policy") != null || 
-    system.compareVersions(my.target.receiptForIdentifier("ee.ria.chrome-token-signing").version, "1.0.9") < 0);
+  return pm_chrome_policy_visible() && pm_chrome_selected() &&
+    my.target.receiptForIdentifier("eu.web-eid.web-eid-chrome-policy") != null;
 }
 
 function pm_drivers_selected() {
@@ -124,7 +115,7 @@ function pm_drivers_selected() {
     </script>
     <choices-outline>
         <line choice="default"/>
-        <line choice="safari"/>
+        <line choice="native"/>
         <line choice="firefox"/>
         <line choice="chrome"/>
         <line choice="chrome_policy"/>
@@ -134,15 +125,17 @@ function pm_drivers_selected() {
         <pkg-ref id="ee.ria.updater">updater.pkg</pkg-ref>
         <pkg-ref id="ee.ria.open-eid">Open-EID.pkg</pkg-ref>
     </choice>
-    <choice id="safari" title="SU_SAFARI" description="SU_SAFARI" start_selected="pm_safari_selected()">
-        <pkg-ref id="ee.ria.safari-token-signing">safari-token-signing.pkg</pkg-ref>
+    <choice id="native" title="SU_BASE" visible="false"
+            start_enabled="choices.chrome.selected || choices.firefox.selected"
+            selected="choices.chrome.selected || choices.firefox.selected">
+        <pkg-ref id="eu.web-eid.web-eid">web-eid-native.pkg</pkg-ref>
     </choice>
     <choice id="firefox" title="SU_FIREFOX" description="SU_FIREFOX" start_selected="pm_firefox_selected()">
-        <pkg-ref id="ee.ria.token-signing-firefox">token-signing-firefox.pkg</pkg-ref>
         <pkg-ref id="ee.ria.firefox-pkcs11-loader">firefox-pkcs11-loader.pkg</pkg-ref>
+        <pkg-ref id="eu.web-eid.web-eid-firefox">web-eid-firefox.pkg</pkg-ref>
     </choice>
     <choice id="chrome" title="SU_CHROME" description="SU_CHROME" start_selected="pm_chrome_selected()">
-        <pkg-ref id="ee.ria.token-signing-chrome">token-signing-chrome.pkg</pkg-ref>
+        <pkg-ref id="eu.web-eid.web-eid-chrome">web-eid-chrome.pkg</pkg-ref>
     </choice>
     <choice id="chrome_policy" title="SU_CHROME_POLICY" description="SU_CHROME_POLICY"
             start_selected="pm_chrome_policy_selected()"
@@ -150,7 +143,7 @@ function pm_drivers_selected() {
             start_visible="pm_chrome_policy_visible()"
             enabled="choices.chrome.selected"
             selected="choices.chrome.selected ? choices.chrome_policy.selected : false">
-        <pkg-ref id="ee.ria.token-signing-chrome-policy">token-signing-chrome-policy.pkg</pkg-ref>
+        <pkg-ref id="eu.web-eid.web-eid-chrome-policy">web-eid-chrome-policy.pkg</pkg-ref>
     </choice>
     <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
         <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>

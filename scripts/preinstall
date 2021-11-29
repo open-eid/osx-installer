@@ -27,15 +27,24 @@ rm -rf /Library/Internet\ Plug-Ins/esteidsafariplugin.webplugin \
 	/Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{aa84ce40-4253-a00a-8cd6-0800200f9a6* \
 	/Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app \
 	/Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json \
+	/Library/Google/Chrome/NativeMessagingHosts/eu.webeid.json \
 	/Library/Application\ Support/Google/Chrome/External\ Extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json \
+	/Library/Application\ Support/Google/Chrome/External\ Extensions/ncibgoaomkmdpilpocfeponihegamlic.json \
 	/Library/Application\ Support/Mozilla/NativeMessagingHosts/ee.ria.esteid.json \
+	/Library/Application\ Support/Mozilla/NativeMessagingHosts/eu.webeid.json \
 	/Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{443830f0-1fff-4f9a-aa1e-444bafbc7319\}.xpi \
 	/Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{02274e0c-d135-45f0-8a9c-32b35110e10d\}.xpi \
 	/Library/Application\ Support/Mozilla/PKCS11Modules/onepinopenscpkcs11.json \
 	/Library/Application\ Support/Mozilla/PKCS11Modules/idemiaawppkcs11.json \
 	/Applications/Utilities/TokenSigningApp.app \
-	/Applications/Utilities/TokenSigningSafariHelper.app
+	/Applications/Utilities/TokenSigningSafariHelper.app \
+	/Applications/Utilities/web-eid.app
+
+PLIST=/Library/Preferences/org.mozilla.firefox.plist
+defaults write ${PLIST} ExtensionSettings -dict-add "'{443830f0-1fff-4f9a-aa1e-444bafbc7319}'" "{ 'installation_mode' = 'blocked'; }"
+
 profiles remove --identifier ee.ria.chrome-token-signing
+profiles remove --identifier ee.ria.web-eid
 
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.ria.open-eid.* \
@@ -52,6 +61,7 @@ rm -rf /var/db/receipts/ee.ria.open-eid.* \
 	/var/db/receipts/ee.ria.token-signing-firefox.* \
 	/var/db/receipts/ee.ria.token-signing-chrome-policy.* \
 	/var/db/receipts/ee.ria.safari-token-signing.* \
+	/var/db/receipts/eu.web-eid.web-eid.* \
 	/var/db/receipts/org.opensc-project.mac.*
 
 
