@@ -35,7 +35,7 @@ setfile -a V ${tmpdir}/background.png
 hdiutil create Open-EID_$1.dmg -ov -volname Open-EID -srcfolder ${tmpdir}
 
 rmdir root
-rm -rf .DS_Store background.png Open-EID.pkg License.txt scripts ${tmpdir}
+rm -rf .DS_Store background.png warning.png Open-EID.pkg License.txt scripts ${tmpdir}
 
 if [ ! -z "$2" ]
 then
