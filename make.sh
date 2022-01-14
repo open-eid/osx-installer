@@ -8,6 +8,7 @@ then
 else
     cp ${SOURCE}/background_release.png background.png
 fi
+cp -r ${SOURCE}/resources/* .
 cp ${SOURCE}/License.txt .
 cp -r ${SOURCE}/scripts .
 defaults write $PWD/scripts/version.plist version $1
