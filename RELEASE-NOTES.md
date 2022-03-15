@@ -1,8 +1,54 @@
+Packaging version [22.01](https://github.com/open-eid/osx-installer/releases/tag/v22.01) release notes
+--------------------------------------------
+- Include Web-eID support
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v21.02...v22.01)
+
+Packaging version [21.02](https://github.com/open-eid/osx-installer/releases/tag/v21.02) release notes
+--------------------------------------------
+- Allow unselect chrome policy on reinstall (#47)
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v20.12...v21.02)
+
+Packaging version [20.12](https://github.com/open-eid/osx-installer/releases/tag/v20.12) release notes
+--------------------------------------------
+- Allow unselect chrome policy on reinstall (#47)
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v20.09...v20.12)
+
+Packaging version [20.09](https://github.com/open-eid/osx-installer/releases/tag/v20.09) release notes
+--------------------------------------------
+- Disable chrome policy on macOS 10.16 (#45)
+- Don't install chrome policy when extension is not installed (#43)
+- Sync plugins package with distribution package (#44)
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v20.05...v20.09)
+
+Packaging version [20.05](https://github.com/open-eid/osx-installer/releases/tag/v20.05) release notes
+--------------------------------------------
+- Raise minimum supported macOS version to 10.13 (#41)
+- Remove firefox-token-signing (#42)
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v20.01...v20.05)
+
+Packaging version [20.01](https://github.com/open-eid/osx-installer/releases/tag/v20.01) release notes
+--------------------------------------------
+- Remove Firefox extensions (#39)
+- Removed esteid-tokend from installer (#38)
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v19.10...v20.01)
+
+Packaging version [19.10](https://github.com/open-eid/osx-installer/releases/tag/v19.10) release notes
+--------------------------------------------
+- Support new chrome-token-signing package layout
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v19.07...v19.10)
+
 Packaging version [19.07](https://github.com/open-eid/osx-installer/releases/tag/v19.07) release notes
 --------------------------------------------
 - Remove IDEMIA PKCS11 driver
 
-[Full Changelog](https://github.com/open-eid/osx-installer/compare/v19.02...v19.06)
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v19.02...v19.07)
 
 Packaging version [19.02](https://github.com/open-eid/osx-installer/releases/tag/v19.02) release notes
 --------------------------------------------

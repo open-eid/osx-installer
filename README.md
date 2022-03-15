@@ -11,10 +11,10 @@ A .DMG package with various drivers and browser plugins.
         cd osx-installer
 
 2. Download dependencies to packages folder
-   * token-signing-chrome-policy
-   * token-signing-chrome
-   * token-signing-firefox
-   * safari-token-signing
+   * web-eid-native
+   * web-eid-chrome
+   * web-eid-chrome-policy
+   * web-eid-firefox
    * firefox-pkcs11-loader
    * opensc
    * esteid-ctk-tokend
@@ -22,11 +22,11 @@ A .DMG package with various drivers and browser plugins.
 
 3. Run make.sh script, optional parameter CN from keychain installer signing  certificate
 
-        sh make.sh 18.9.0.0
+        sh make.sh 22.1.0.0
 
 4. Execute
 
-        open Open-EID_18.9.0.0.dmg 
+        open Open-EID_22.1.0.0.dmg 
 
 ## Support
 Official builds are provided through official distribution point [id.ee](https://www.id.ee/en/article/install-id-software/). If you want support, you need to be using official builds. Contact our support via [www.id.ee](http://www.id.ee) for assistance.
