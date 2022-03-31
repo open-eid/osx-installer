@@ -14,17 +14,13 @@ killall -9 OTCryptokiGuiSvr
 
 echo 'Removing EstEID.tokend'
 /usr/local/bin/opensc-uninstall
-rm -rf /Library/Security/tokend/EstEID.tokend
-rm -rf /System/Library/Security/tokend/EstEID.tokend
 rm -rf /Applications/Utilities/EstEIDTokenApp.app
 
 echo 'Clearing tokens cache'
 rm -rf /var/db/TokenCache/tokens/*
 
 echo 'Removing browser plug-ins'
-rm -rf /Library/Internet\ Plug-Ins/esteidsafariplugin.webplugin \
-	/Library/Internet\ Plug-Ins/esteidfirefoxplugin.* \
-	/Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{aa84ce40-4253-a00a-8cd6-0800200f9a6* \
+rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{aa84ce40-4253-a00a-8cd6-0800200f9a6* \
 	/Library/Google/Chrome/NativeMessagingHosts/chrome-token-signing.app \
 	/Library/Google/Chrome/NativeMessagingHosts/ee.ria.esteid.json \
 	/Library/Google/Chrome/NativeMessagingHosts/eu.webeid.json \
@@ -50,10 +46,7 @@ profiles remove --identifier ee.ria.web-eid
 echo 'Remove old package references'
 rm -rf /var/db/receipts/ee.ria.open-eid.* \
 	/var/db/receipts/ee.ria.ID-updater.* \
-	/var/db/receipts/ee.ria.esteid-tokend* \
 	/var/db/receipts/ee.ria.esteid-ctk-tokend* \
-	/var/db/receipts/ee.ria.esteidfirefoxplugin.* \
-	/var/db/receipts/ee.ria.esteidpkcs11loader.* \
 	/var/db/receipts/ee.ria.firefox-pkcs11-loader.* \
 	/var/db/receipts/ee.ria.firefox-token-signing.* \
 	/var/db/receipts/ee.ria.chrome-token-signing.* \
