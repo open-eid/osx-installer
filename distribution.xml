@@ -51,8 +51,7 @@ function pm_chrome_policy_selected() {
 
 function pm_drivers_selected() {
   return my.target.receiptForIdentifier("ee.ria.open-eid") == null ||
-    (my.target.receiptForIdentifier("ee.ria.esteid-ctk-tokend") != null ||
-     my.target.receiptForIdentifier("org.opensc-project.mac") != null);
+    my.target.receiptForIdentifier("ee.ria.esteid-ctk-tokend") != null;
 }
 ]]>
     </script>
@@ -88,7 +87,6 @@ function pm_drivers_selected() {
         <pkg-ref id="eu.web-eid.web-eid-chrome-policy">web-eid-chrome-policy.pkg</pkg-ref>
     </choice>
     <choice id="drivers" title="SU_DRIVERS" description="SU_DRIVERS" start_selected="pm_drivers_selected()">
-        <pkg-ref id="org.opensc-project.mac">opensc.pkg</pkg-ref>
         <pkg-ref id="ee.ria.esteid-ctk-tokend">esteid-ctk-tokend.pkg</pkg-ref>
     </choice>
 </installer-gui-script>

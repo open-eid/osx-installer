@@ -34,13 +34,11 @@ function remove_all {
 
     echo 'Removing Drivers'
     sudo /usr/local/bin/opensc-uninstall
-    sudo rm -rf /Library/Security/tokend/EstEID.tokend
     sudo rm -rf /Applications/Utilities/EstEIDTokenApp.app
 
     echo 'Cleaning up'
     sudo pkgutil --forget ee.ria.open-eid
     sudo pkgutil --forget ee.ria.ID-updater
-    sudo pkgutil --forget ee.ria.esteid-tokend
     sudo pkgutil --forget ee.ria.esteid-ctk-tokend
     sudo pkgutil --forget ee.ria.firefox-pkcs11-loader
     sudo pkgutil --forget ee.ria.chrome-token-signing
