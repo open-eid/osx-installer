@@ -1,3 +1,12 @@
+Packaging version [22.06](https://github.com/open-eid/osx-installer/releases/tag/v22.06) release notes
+--------------------------------------------
+- Remove OpenSC from package (#61)
+- Remove Firefox PKCS11 loader from package (#57)
+- Limit installation to macOS 10.15 (#56)
+- Move translations to resources (#53)
+
+[Full Changelog](https://github.com/open-eid/osx-installer/compare/v22.01...v22.06)
+
 Packaging version [22.01](https://github.com/open-eid/osx-installer/releases/tag/v22.01) release notes
 --------------------------------------------
 - Include Web-eID support

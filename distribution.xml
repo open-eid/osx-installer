@@ -8,7 +8,7 @@ https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/I
     <allowed-os-versions>
         <os-version min="10.10"/>
     </allowed-os-versions>
-    <options customize="allow" require-scripts="false" rootVolumeOnly="true" hostArchitectures="x86_64"/>
+    <options customize="allow" require-scripts="false" rootVolumeOnly="true" hostArchitectures="arm64,x86_64"/>
     <!--domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/-->
     <background file="background.png" alignment="bottomleft" mime-type="image/png" scaling="none" />
     <welcome file="Welcome.html" mime-type="text/html"/>
