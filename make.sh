@@ -26,8 +26,6 @@ pkgbuild "${ARGS[@]}" --root root --scripts scripts --id ee.ria.open-eid \
     packages/open-eid.pkg
 productbuild "${ARGS[@]}" --distribution ${SOURCE}/distribution.xml \
     --package-path packages/ --resources . Open-EID.pkg
-productbuild "${ARGS[@]}" --distribution ${SOURCE}/plugins.xml \
-    --package-path packages/ --resources . Open-EID-plugins_$1.pkg
 
 cp ${SOURCE}/DS_Store ${tmpdir}/.DS_Store
 cp Open-EID.pkg background.png ${SOURCE}/uninstall.sh ${tmpdir}
