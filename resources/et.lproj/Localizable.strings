@@ -1,8 +1,7 @@
 "SU_TITLE" = "eID tarkvara";
 "SU_ERROR" = "Viga";
-"SU_1015" = "macOS peab olema 10.15 või uuem.";
+"SU_11" = "macOS peab olema 11 või uuem.";
 "SU_BASE" = "Baas komponendid";
 "SU_FIREFOX" = "Firefox isikutuvastamise ja allkirjastamise tugi";
 "SU_CHROME" = "Chrome isikutuvastamise ja allkirjastamise tugi";
-"SU_CHROME_POLICY" = "Chrome laiendus aktiveeritakse automaatselt";
 "SU_DRIVERS" = "Eesti ID-kaardi tugi";
