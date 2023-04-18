@@ -1,13 +1,5 @@
 #!/bin/bash
 
-echo 'Removing Applications'
-if $(codesign -d -vv /Applications/qdigidoc4.app 2>&1 |grep --quiet "3rd Party Mac Developer Application: Riigi Infosüsteemi Amet\|Apple Mac OS Application Signing"); 
-then
-	echo "qdigidoc4 is appstore version";
-else
-	rm -rf /Applications/qdigidoc4.app;
-fi
-
 echo 'Removing IDEMIA packages'
 echo y | /Library/AWP/awp_uninstall.sh
 killall -9 OTCryptokiGuiSvr
@@ -15,9 +7,6 @@ killall -9 OTCryptokiGuiSvr
 echo 'Removing EstEID.tokend'
 /usr/local/bin/opensc-uninstall
 rm -rf /Applications/Utilities/EstEIDTokenApp.app
-
-echo 'Clearing tokens cache'
-rm -rf /var/db/TokenCache/tokens/*
 
 echo 'Removing browser plug-ins'
 rm -rf /Library/Application\ Support/Mozilla/Extensions/\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}/\{aa84ce40-4253-a00a-8cd6-0800200f9a6* \
@@ -57,13 +46,6 @@ rm -rf /var/db/receipts/ee.ria.open-eid.* \
 	/var/db/receipts/ee.ria.safari-token-signing.* \
 	/var/db/receipts/eu.web-eid.web-eid.* \
 	/var/db/receipts/org.opensc-project.mac.*
-
-
-if [ -e "/Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist" ]; then
-	echo 'Remove old updater'
-	launchctl unload /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
-	rm -f /Library/LaunchAgents/ee.EstonianIDCard.id-updater.plist
-fi
 
 if [ -e "/Library/LaunchAgents/ee.ria.id-updater.plist" ]; then
 	echo 'Remove old updater'
