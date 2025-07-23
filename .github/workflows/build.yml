@@ -1,0 +1,48 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  macos:
+    name: Build on macOS
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Download Updater package
+      uses: dawidd6/action-download-artifact@v11
+      with:
+        workflow: build.yml
+        workflow_conclusion: ""
+        branch: master
+        name: macOS
+        path: packages
+        repo: open-eid/updater
+    - name: Download Esteid CTK Tokend package
+      uses: dawidd6/action-download-artifact@v11
+      with:
+        workflow: build.yml
+        branch: master
+        name: pkg
+        path: packages
+        repo: open-eid/esteid-ctk-tokend
+    - name: Download Web-eID packages
+      uses: dawidd6/action-download-artifact@v11
+      with:
+        workflow: cmake-macos.yml
+        branch: main
+        path: packages
+        repo: web-eid/web-eid-app
+    - name: Build
+      run: |
+        mv packages/updater*.pkg packages/updater.pkg
+        mv packages/esteid-ctk-tokend*.pkg packages/esteid-ctk-tokend.pkg
+        mv packages/web-eid*/src/app/web-eid-native*.pkg packages/web-eid-native.pkg
+        mv packages/web-eid*/src/app/web-eid-chrome*.pkg packages/web-eid-chrome.pkg
+        mv packages/web-eid*/src/app/web-eid-firefox*.pkg packages/web-eid-firefox.pkg
+        ./make.sh $(date +"%y.%-m.%-d").${{ github.run_number }}.BETA
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: macOS
+        path: Open-EID_*.dmg
