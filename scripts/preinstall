@@ -5,7 +5,6 @@ echo y | /Library/AWP/awp_uninstall.sh
 killall -9 OTCryptokiGuiSvr
 
 echo 'Removing EstEID.tokend'
-/usr/local/bin/opensc-uninstall
 rm -rf /Applications/Utilities/EstEIDTokenApp.app
 
 echo 'Removing browser plug-ins'
@@ -44,8 +43,7 @@ rm -rf /var/db/receipts/ee.ria.open-eid.* \
 	/var/db/receipts/ee.ria.token-signing-firefox.* \
 	/var/db/receipts/ee.ria.token-signing-chrome-policy.* \
 	/var/db/receipts/ee.ria.safari-token-signing.* \
-	/var/db/receipts/eu.web-eid.web-eid.* \
-	/var/db/receipts/org.opensc-project.mac.*
+	/var/db/receipts/eu.web-eid.web-eid.*
 
 if [ -e "/Library/LaunchAgents/ee.ria.id-updater.plist" ]; then
 	echo 'Remove old updater'
