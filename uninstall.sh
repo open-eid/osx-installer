@@ -33,7 +33,6 @@ function remove_all {
     sudo defaults write ${PLIST} ExtensionSettings -dict-add "'{e68418bc-f2b0-4459-a9ea-3e72b6751b07}'" "{ 'installation_mode' = 'blocked'; }"
 
     echo 'Removing Drivers'
-    sudo /usr/local/bin/opensc-uninstall
     sudo rm -rf /Applications/Utilities/EstEIDTokenApp.app
 
     echo 'Cleaning up'
@@ -51,7 +50,6 @@ function remove_all {
     sudo pkgutil --forget eu.web-eid.web-eid-chrome
     sudo pkgutil --forget eu.web-eid.web-eid-chrome-policy
     sudo pkgutil --forget eu.web-eid.web-eid-firefox
-    sudo pkgutil --forget org.opensc-project.mac
     sudo rm -rf /Library/Preferences/ee.ria.*
 
     echo 'Uninstall done!'
