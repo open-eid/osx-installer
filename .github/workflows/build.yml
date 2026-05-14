@@ -37,9 +37,9 @@ jobs:
       run: |
         mv packages/updater*.pkg packages/updater.pkg
         mv packages/esteid-ctk-tokend*.pkg packages/esteid-ctk-tokend.pkg
-        mv packages/web-eid*/src/app/web-eid-native*.pkg packages/web-eid-native.pkg
-        mv packages/web-eid*/src/app/web-eid-chrome*.pkg packages/web-eid-chrome.pkg
-        mv packages/web-eid*/src/app/web-eid-firefox*.pkg packages/web-eid-firefox.pkg
+        mv packages/web-eid*/web-eid-native*.pkg packages/web-eid-native.pkg
+        mv packages/web-eid*/web-eid-chrome*.pkg packages/web-eid-chrome.pkg
+        mv packages/web-eid*/web-eid-firefox*.pkg packages/web-eid-firefox.pkg
         ./make.sh $(date +"%y.%-m.%-d").${{ github.run_number }}.BETA
     - name: Archive artifacts
       uses: actions/upload-artifact@v4
