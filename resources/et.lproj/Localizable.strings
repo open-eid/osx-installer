@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: Estonian Information System Authority */
+/* SPDX-License-Identifier: LGPL-2.1-or-later */
+
 "SU_TITLE" = "eID tarkvara";
 "SU_ERROR" = "Viga";
 "SU_14" = "macOS peab olema 14 või uuem.";
