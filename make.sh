@@ -1,4 +1,6 @@
 #!/bin/bash
+# SPDX-FileCopyrightText: Estonian Information System Authority
+# SPDX-License-Identifier: LGPL-2.1-or-later
 
 SOURCE=$( dirname "${BASH_SOURCE[0]}" )
 tmpdir=$(mktemp -d /tmp/hdiutil.XXXXX)
