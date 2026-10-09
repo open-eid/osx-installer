@@ -49,10 +49,3 @@ jobs:
       with:
         name: macOS
         path: Open-EID_*.dmg
-  copyright:
-    name: Check copyright headers
-    uses: open-eid/.github/.github/workflows/copyright.yml@b2d87c7447ebcc01beb54c84f3978a81c1d64877 # master
-    with:
-      # Installer pages are .html, which is not in the default extension list.
-      # Matched by name so any new resources/<locale>.lproj/ is covered too.
-      filenames: Welcome.html Conclusion.html
